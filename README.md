@@ -122,5 +122,12 @@ Per via della loro natura parallela, le schede grafiche di oggi hanno migliaia d
 Alcune di queste shaders sono configurabili dallo sviluppatore, e ciò ci permette di scriverne di nostre, che rimpiazziono quelle di default. Ciò ci da molto più controllo sulle singolari parti della pipeline.
 
 Le shaders son scritte nel OpenGL Shading Language, GLSL.
+
 ![Graphic Pipeline](https://i.imgur.com/W9mIk9D.png)
+
+Come input alla pipeline grafica passiamo una lista di coordinate 3D che formano un triangolo in un array, qua chiamato "Vertex Data"; è una collezione di vertici. Un vertice è una collezione di dati in coordinate 3D.
+
+Il vertex data è rappresentato utilizzando "vertex attributes" che possono contenere ogni tipo di dato che vogliamo; tuttavia, per semplicità assumeremo che ogni vertice consiste in solo una posizione 3D e un valore di colore.
+
+_- Per far saperere ad OpenGL cosa farne della tua collezione di coordinate e colori, è necessario dargli un suggerimento su che tipo di "render types" vuoi che formi con quei dati. Questi suggerimenti son chiamati "primitivi" e vengono dati ad OpenGL quando si usano i comandi per il disegno._
 
