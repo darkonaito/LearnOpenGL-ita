@@ -105,6 +105,6 @@ glClear(GL_COLOR_BUFFER_BIT);
 Notare che si specifica il colore con cui pulire il buffer utilizzando ```glClearColor```.
 Ogni volta che chiamiamo ```glClear```, l'intero buffer verrà riempito col colore indicato da ```glClearColor```.
 
-_- La funzione ```glClearColor``` è una funzione che imposta lo stato, mentre ```glClear``` è una funzione che usa lo stato.
+_- La funzione ```glClearColor``` è una funzione che imposta lo stato, mentre ```glClear``` è una funzione che usa lo stato._
 
 ## Hello Triangle
