@@ -133,3 +133,9 @@ Il vertex data è rappresentato utilizzando "vertex attributes" che possono cont
 
 _- Per far saperere ad OpenGL cosa farne della tua collezione di coordinate e colori, è necessario dargli un suggerimento su che tipo di "render types" vuoi che formi con quei dati. Questi suggerimenti son chiamati "primitivi" e vengono dati ad OpenGL quando si usano i comandi per il disegno._
 
+La prima parte della pipeline è la "vertex shader", che prende come imput un singolo vertice. Il suo scopo principale è quello di trasformare queste coordinate 3D in coordinate differenti; questa shader ci permette di effettuare alcune modifiche sui vertex attributes.
+
+Lo stadio "primitive assembly" prende come input tutti i vertici dalla vertex shader che formano un primitivo e assembla tutti i punti in tale forma primitiva.
+
+L'output del primitive assembly viene passato alla "geometry shader". Questa prende come input una collezione di vertici che formano un primitivo e ha l'abilità di di generare altre forme tramite la creaione di nuovi vertici.
+
