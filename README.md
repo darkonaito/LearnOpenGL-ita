@@ -94,3 +94,17 @@ Non appena i comandi di rendering son finito, i due buffer vengono scambiati cos
 
 ### Rendering
 
+Per verificare che tutto funzioni, proviamo a ripulire lo schermo con un colore a nostra scelta.
+Lo facciamo all'inizio del frame, così da cancellare tutti i risultati del frame precedente.
+
+Possiamo pulire il "color buffer" dello schermo utilizzando ```glClear```, a cui passiamo i "buffer bits" per specificare che buffer vogliamo pulire. Per ora ci interessano solo i colori, quindi puliremo solo il buffer del colore.
+```cpp
+glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+glClear(GL_COLOR_BUFFER_BIT);
+```
+Notare che si specifica il colore con cui pulire il buffer utilizzando ```glClearColor```.
+Ogni volta che chiamiamo ```glClear```, l'intero buffer verrà riempito col colore indicato da ```glClearColor```.
+
+_- La funzione ```glClearColor``` è una funzione che imposta lo stato, mentre ```glClear``` è una funzione che usa lo stato.
+
+## Hello Triangle
