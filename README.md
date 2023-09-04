@@ -242,3 +242,8 @@ Dato che ogni vertici ha una coordinata 3D, creiamo una variabile di input ```ve
 * Vettori: i vettori rappresentano posizioni e direzioni nello spazio, e hanno proprietà utili.
 Un vettore in GLSL ha una grandezza massima di 4, e ognuno dei suoi valori può essere ottenuto tramite ```vec.x, vec.y, vec.z, vec.w```. Il valore vec.w non è utilizzato come una posizione, ma è utile per una cosa chiamata "perspective division", di cui si parlerà più in avanti.
 
+La vertex shader in question è probabilmente la pià semplice che si possa immaginare, in quanto non abbiamo processato nessun dato; tutti i dati son stati reinviati come output della shader.
+
+Nelle applicazioni reali, i dati in ingresso solitamente non son normalizzati, e vanno quindi prima trasformati in coordinate che cadano entro la regione visibile di OpenGL.
+
+### Compiling a shader
