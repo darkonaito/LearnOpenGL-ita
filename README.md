@@ -238,3 +238,7 @@ Per adesso, ci interessano solamente i dati della posizione, quindi necessitiamo
 
 GLSL ha un tipo di dato "vector", che contiene dagli 1 ai 4 float, in base alla cifra suffissa.
 Dato che ogni vertici ha una coordinata 3D, creiamo una variabile di input ```vec3``` con il nome ```aPos```. Specifichiamo inoltre la locazione della variabile di input tramite ```layout (location = 0)```, di cui capirai dopo lo scopo.
+
+* Vettori: i vettori rappresentano posizioni e direzioni nello spazio, e hanno proprietà utili.
+Un vettore in GLSL ha una grandezza massima di 4, e ognuno dei suoi valori può essere ottenuto tramite ```vec.x, vec.y, vec.z, vec.w```. Il valore vec.w non è utilizzato come una posizione, ma è utile per una cosa chiamata "perspective division", di cui si parlerà più in avanti.
+
