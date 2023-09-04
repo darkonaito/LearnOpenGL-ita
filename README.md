@@ -143,3 +143,10 @@ L'output della geometry shader e poi passato allo stadio della rasterizzazione, 
 
 _- Un frammento in OpenGL è tutto ciò di cui esso ha bisogno per renderizzare un singolo pixel._
 
+Lo scopo principale della fragment shader è quello di calcolare il colore finale di un pixel, e questo è solitamente lo stadio dove avvengono tutti gli effetti di OpenGL più avanzati. Spesso la fragment shader contiene dati sulla scena 3D che può utilizzare per calcolare il colore finale di un pixel (luci, ombre, colore della luce, etc).
+
+Dopo che tutti i valori di colore son stati determinati, l'oggetto finale passa attraverso un ultimo stadio chiamato "alpha test" e "blending stage". Questo stadio controlla il valore "depth" e "stencil" del frammento e li utilizza poi per controllare se il frammento risultante è davanti o dietro altri oggetti e se quindi debba essere scartato  meno.
+
+Questo stadio controlla anche i valori alpha, che definiscono l'opacità di un oggetto, e mescola gli oggetti conseguentemente. Il colore finale del pixel potrebbe essere completamente diverso quando si renderizzano più oggetti.
+
+Come vedi, la pipeline è molto complessa e contiene molte parti configurabili. Per quasi tutti i casi, sarà necessario agire solamente sulla vertex e la fragment shaders. La shader geometrica è opzionale e spesso viene lasciata quella di default.
