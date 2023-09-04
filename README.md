@@ -155,3 +155,17 @@ In OpenGL moderno siamo obbligati a definire almeno una vertex shader e una frag
 
 ### Vertex input
 
+Prima di iniziare a disegnare qualcosa, dobbiamo prima fornire ad OpenGL dei dati di vertici. Essendo OpenGL una libreria grafica 3D, tutte le coordinate che specifichiamo sono tridimensionali (x, y, z).
+
+OpenGL non trasforma tutte le tue coordinate 3D in pixel 2D sul tuo schermo: processa solamente coordinate 3D che siano in un range specifico, tra -1.0 e 1.0 su tutte e tre le assi. 
+Tutte le coordinate entro questo che viene chiamato "normalized device coordinates range" finiranno sul tuo schermo.
+
+Dato che vogliamo renderizzare un singolo triangolo, dobbiamo specificare tree vertici, ognuno con una coordinata 3D. Le definiamo in coordinate del dispositivo normalizzate in un array di ```float```:
+```cpp
+float vertices[] = {
+    -0.5f, -0.5f, 0.0f,
+     0.5f, -0.5f, 0.0f,
+     0.0f,  0.5f, 0.0f
+};
+```
+Dato che OpenGL funziona con coordinate 3D, renderizziamo un triangolo 2D ponendo ogni vertice con la coordinata ```z``` di 0.0. In questo modo la profondità del triangolo rimane la stessa, facendolo sembrare 2D.
