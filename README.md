@@ -43,3 +43,7 @@ else
 // Extension not supported: do it the old way
 }
 ```
+
+Con la versione 3.3 di OpenGL raramente si necessita di estensioni.
+
+### State machine
