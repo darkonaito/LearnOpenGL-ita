@@ -179,3 +179,15 @@ Questi dati dei vertici che abbiamo definito vogliamo adesso inviarli come input
 
 La vertex shader processerà tanti vertici quanti glie ne vengono indicati dalla sua memoria.
 
+Gestiamo tale memoria tramita i "vertex buffer objects (VBO)", che possono memorizzare un grande numero di vertici nella memoria della GPU.
+
+Il loro vantaggio è che ci permettono di inviare grandi gruppi di dati alla scheda grafica, anziché inviare un vertice alla volta.
+Quello di inviare dati dalla CPU alla GPU è un processo relativamente lento, quindi cerchiamo di mandare più dati possibili in una volta sola.
+
+Una volta che i dati sono nella memoria della scheda grafica, la vertex shader ha un accesso quasi istantaneo ai vertici, e ciò ci garantisce una velocità non da poco.
+
+Come ogni oggetto in OpenGL, questo buffer ha un ID unico. Per crearne uno utilizziamo la funzione ```glGenBuffers```:
+```cpp
+unsigned int VBO;
+glGenBuffers(1, &VBO);
+```
