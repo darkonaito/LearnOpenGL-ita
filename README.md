@@ -47,3 +47,8 @@ else
 Con la versione 3.3 di OpenGL raramente si necessita di estensioni.
 
 ### State machine
+OpenGL è una grande "state machine": una collezzione di variabili che definiscono come openGL debba operare sul momento. Lo stato di OpenGL è comunemente chiamato il "contesto" OpenGL. Quando usiamo OpenGL, spesso cambiamo il suo stato modificando delle opzioni, manipolando buffer e renderizziamo utilizzando il contesto corrente.
+
+Lavorando con OpenGL ci troveremo davanti varie funzioni che cambiano il suo stato, ed altre che lo utilizzano.
+
+### Objects
