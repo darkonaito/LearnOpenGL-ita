@@ -32,7 +32,7 @@ Tutti i concetti e le tecniche rimangono le stesse per tutte le versioni moderne
 Una grande feature di OpenGL è il suo supporto delle estensioni. Ogni volta che una compagnia grafica inventa una nuova tecnica o una nuova ottimizzazione importante per il rendering, queste vengono solitamente poste in estensioni implementate nei driver.
 Se l'hardware su cui viene eseguita un'applicazione supporta tali estensioni, gli sviluppatori possono utilizzare le funzionalità offerte dall'estensione.
 
-Quando un'estension è populare o particolarmente utile è possibile che diventa parte di una futura versione di OpenGL.
+Quando un'estension è popolare o particolarmente utile è possibile che diventi parte di una futura versione di OpenGL.
 
 Lo sviluppatore deve interrogare la macchina per vedere se l'estensione che ha intenzione di utilizzare è disponibile:
 ```cpp
@@ -49,7 +49,7 @@ else
 Con la versione 3.3 di OpenGL raramente si necessita di estensioni.
 
 ### State machine
-OpenGL è una grande "state machine": una collezzione di variabili che definiscono come openGL debba operare sul momento. Lo stato di OpenGL è comunemente chiamato il "contesto" OpenGL. Quando usiamo OpenGL, spesso cambiamo il suo stato modificando delle opzioni, manipolando buffer e renderizziamo utilizzando il contesto corrente.
+OpenGL è una grande "state machine": una collezione di variabili che definiscono come OpenGL debba operare sul momento. Lo stato di OpenGL è comunemente chiamato il "contesto" OpenGL. Quando usiamo OpenGL, spesso cambiamo il suo stato modificando delle opzioni, manipolando buffer e renderizziamo utilizzando il contesto corrente.
 
 Lavorando con OpenGL ci troveremo davanti varie funzioni che cambiano il suo stato, ed altre che lo utilizzano.
 
@@ -112,3 +112,6 @@ _- La funzione ```glClearColor``` è una funzione che imposta lo stato, mentre `
 ## Hello Triangle
 In OpenGL, tutto è nello spazio tridimensionale, ma lo schermo e la finestra sono array bidimensionali di pixel, per cui grande parte del compito di OpenGL è quello di trasformare tutte le coordinate tridimensionali in pixel bidimensionali che stiano sul tuo schermo.
 
+La pipeline grafica prende come input una serie di coordinate 3D e le trasforma in pixel colorati sul tuo schermo. 
+
+Questa può essere divisa in due grandi parti: la prima trasofrma le coordinate 3D in coordinate 2D, e la seconda 
