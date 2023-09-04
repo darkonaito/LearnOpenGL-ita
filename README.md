@@ -122,4 +122,5 @@ Per via della loro natura parallela, le schede grafiche di oggi hanno migliaia d
 Alcune di queste shaders sono configurabili dallo sviluppatore, e ciò ci permette di scriverne di nostre, che rimpiazziono quelle di default. Ciò ci da molto più controllo sulle singolari parti della pipeline.
 
 Le shaders son scritte nel OpenGL Shading Language, GLSL.
-![Alt text](image.png)
+![](https://imgur.com/W9mIk9D)
+
