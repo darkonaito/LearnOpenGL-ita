@@ -191,3 +191,14 @@ Come ogni oggetto in OpenGL, questo buffer ha un ID unico. Per crearne uno utili
 unsigned int VBO;
 glGenBuffers(1, &VBO);
 ```
+OpenGL ha tanti tipi di buffer, e il tipo di buffer di un buffer di vertici è ```GL_ARRAY_BUFFER```.
+OpenGL ci permette di abbinare diversi buffer in una volta, purché siano di tipo differente. 
+
+Possiamo abbinare il buffer appena creato al target ```GL_ARRAY_BUFFER``` tramite la funzione ```glBindBuffer```:
+```cpp
+glBindBuffer(GL_ARRAY_BUFFER, VBO);
+```
+D'ora in poi, ogni chiamata a buffer che facciamo (riferita al target ```GL_ARRAY_BUFFER```) sarà usata per configurare il buffer attualmente abbinato, nel nostro caso VBO. Dopodiché, possiamo effettuare una chiamata alla funzione ```glBufferData```, che copia i dati dei vertici definiti precedentemente dentro la memoria del buffer.
+```cpp
+glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+```
