@@ -171,6 +171,6 @@ float vertices[] = {
 Dato che OpenGL funziona con coordinate 3D, renderizziamo un triangolo 2D ponendo ogni vertice con la coordinata ```z``` di 0.0. In questo modo la profondità del triangolo rimane la stessa, facendolo sembrare 2D.
 
 - ***Normalized Device Coordinates (NDC)***
-Una volta che le tue coordinate dei vertici son stati processati nella vertex shader, devono essere in coordinate del dispositivo normalizzate, che è un piccolo spazio dove i valori delle tre coordinate variano da -1.0 a 1.0. Qualsiasi coordinata che si trova fuori da questo range verrà scartata e non sarà visibile sul tuo schermo.
+Una volta che le tue coordinate dei vertici son stati processati nella vertex shader, devono essere in coordinate del dispositivo normalizzate, che è un piccolo spazio dove i valori delle tre coordinate variano da -1.0 a 1.0. Qualsiasi coordinata che si trovi fuori da questo range verrà scartata e non sarà visibile sul tuo schermo.
 L'asse delle y punta verso l'alto, e le coordinate (0, 0) sono al centro del grafico.
 Le tue coordinate NDC saranno trasformate a coordinate "screen-space" tramite il "viewport transform" utilizzando i dati che hai fornito tramite ```glViewport```.
