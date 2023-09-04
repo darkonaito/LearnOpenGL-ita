@@ -8,3 +8,5 @@ La specifica OpenGL detta esattamente quale debba essere l'output e il risultato
 Le versioni sviluppate di OpenGL sono libere di avere implementazioni differenti, purché il loro risultato sia come da specifica.
 
 Le persone che sviluppano le librerie OpenGL sono solitamente i costruttori delle schede grafiche.
+
+**Quando vi è un bug nell'implementazione, solitamente aggiornare i driver della propria scheda video è una soluzione efficace.**
