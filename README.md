@@ -123,6 +123,8 @@ Alcune di queste shaders sono configurabili dallo sviluppatore, e ciò ci permet
 
 Le shaders son scritte nel OpenGL Shading Language, GLSL.
 
+Le parti in blu sono quelle che possiamo alterare:
+
 ![Graphic Pipeline](https://i.imgur.com/W9mIk9D.png)
 
 Come input alla pipeline grafica passiamo una lista di coordinate 3D che formano un triangolo in un array, qua chiamato "Vertex Data"; è una collezione di vertici. Un vertice è una collezione di dati in coordinate 3D.
