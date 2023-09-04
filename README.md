@@ -202,3 +202,12 @@ D'ora in poi, ogni chiamata a buffer che facciamo (riferita al target ```GL_ARRA
 ```cpp
 glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 ```
+```glBufferData``` è una funzione che copia dei dati definiti dall'utente nel buffer momentaneamente abbinato.
+
+Il suo primo argomento è il tipo di buffer dentro cui vogliamo copiare i dati; Il secondo argomento specifica la grandezza in byte dei dati; Il terzo parametro sono i dati veri e propri.
+
+Il quarto parametro specifica come vogliamo che la scheda grafica tratti i dati ricevuti. Può accettare tre argomenti:
+* ```GL_STREAM_DRAW``` : I dati sono impostati una sola volta e usati dalla GPU per poche volte.
+* ```GL_STATIC_DRAW``` : I dati sono impostati una sola volta e usati tante volte.
+* ```GL_DYNAMIC_DRAW```: I dati cambiano molto spesso e sono usati tante volte.
+
