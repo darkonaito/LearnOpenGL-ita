@@ -83,7 +83,14 @@ _- Dietro le scene, OpenGL usa i dati specificati con ```glViewport``` per trasf
 ### Double buffer
 
 Quando un'applicazione disegna in un singolo buffer, l'immagine risultante potrebbe presentare problemi di flickering. Ciò è dovuto al fatto che l'immagine mostrata non è disegnata in un istante, ma a pixel per pixel (solitamente da sinistra a destra e dall'alto al basso). 
+
 Visto che quest'immagine viene mostrata all'utente quando sta ancor venendo disegnata, il risultato potrebbe presentare artefatti.
+
 Per evitare tale errore, si può ricorrere a un doppio buffer.
+
 Il "front buffer" contiene l'immagine completa che viene mostrata nello schermo, mentre i comandi di rendering disegnano sul "back buffer". 
+
 Non appena i comandi di rendering son finito, i due buffer vengono scambiati così l'immagine viene mostrata senza che venga ancora disegnata.
+
+### Rendering
+
