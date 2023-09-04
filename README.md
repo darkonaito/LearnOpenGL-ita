@@ -139,3 +139,7 @@ Lo stadio "primitive assembly" prende come input tutti i vertici dalla vertex sh
 
 L'output del primitive assembly viene passato alla "geometry shader". Questa prende come input una collezione di vertici che formano un primitivo e ha l'abilità di di generare altre forme tramite la creaione di nuovi vertici.
 
+L'output della geometry shader e poi passato allo stadio della rasterizzazione, che mappa i primitivi ai corrispondenti pixel sullo schermo, risultando in "fragments" utilizzabili dalla fragment shader. Prima che questa venga eseguita, viene performato del clipping, che scarta tutti i frammenti che sono fuori dallo spazio visivo, per aumentare la performance.
+
+_- Un frammento in OpenGL è tutto ciò di cui esso ha bisogno per renderizzare un singolo pixel._
+
