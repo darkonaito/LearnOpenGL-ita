@@ -152,3 +152,6 @@ Questo stadio controlla anche i valori alpha, che definiscono l'opacità di un o
 Come vedi, la pipeline è molto complessa e contiene molte parti configurabili. Per quasi tutti i casi, sarà necessario agire solamente sulla vertex e la fragment shaders. La shader geometrica è opzionale e spesso viene lasciata quella di default.
 
 In OpenGL moderno siamo obbligati a definire almeno una vertex shader e una fragment shader, essendo che non ve ne sono di default. Per questo motivo è spesso difficile iniziare ad imparare OpenGL moderno, dato che è necessaria una certa conoscenza prima di esser in grado di renderizzare anche solo il primo triangolo.
+
+### Vertex input
+
