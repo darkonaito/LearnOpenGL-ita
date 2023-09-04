@@ -36,11 +36,11 @@ Lo sviluppatore deve interrogare la macchina per vedere se l'estensione che ha i
 ```cpp
 if(GL_ARB_extension_name)
 {
-// Do cool new and modern stuff supported by hardware
+    // Do cool new and modern stuff supported by hardware
 }
 else
 {
-// Extension not supported: do it the old way
+    // Extension not supported: do it the old way
 }
 ```
 
@@ -57,9 +57,9 @@ Le librerie OpenGL sono scritte in C e ciò permette loro di essere derivate in 
 Uno dei costrutti utilizzati in OpenGL sono gli oggetti: gli oggetti sono collezioni di opzioni che rappresentano una parte dello stato di OpenGL. Potremmo avere un oggetto rappresentante le impostazioni della finestra, e potremmo impostare la sua grandezza, quanti colori supporta eccetera.
 ```cpp
 struct object_name {
-float option1;
-int option2;
-char[] name;
+    float option1;
+    int option2;
+    char[] name;
 };
 ```
 
