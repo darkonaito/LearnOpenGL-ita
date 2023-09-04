@@ -9,4 +9,4 @@ Le versioni sviluppate di OpenGL sono libere di avere implementazioni differenti
 
 Le persone che sviluppano le librerie OpenGL sono solitamente i costruttori delle schede grafiche.
 
-_Quando vi è un bug nell'implementazione, solitamente aggiornare i driver della propria scheda video è una soluzione efficace._
+_- Quando vi è un bug nell'implementazione, solitamente aggiornare i driver della propria scheda video è una soluzione efficace._
