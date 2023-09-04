@@ -211,3 +211,8 @@ Il quarto parametro specifica come vogliamo che la scheda grafica tratti i dati 
 * ```GL_STATIC_DRAW``` : I dati sono impostati una sola volta e usati tante volte.
 * ```GL_DYNAMIC_DRAW```: I dati cambiano molto spesso e sono usati tante volte.
 
+I dati riguardanti la posizioen del triangolo non cambiano, sono usati molti, e rimangono gli stessi per ogni chiamata di rendering, quindi il suo tipo di utilizzo dev'essere ```GL_STATIC_DRAW```.
+
+Se, per esempio, avessimo un buffer con dati che tendono a cambiare spesso, un tipo di utilizzo ```GL_DYNAMIC_DRAW``` ci assicura che la scheda grafica ponga qui dati in un posto nella memoria che ne consenta un accesso veloce.
+
+Per ora, abbiamo immagazzinato i dati dei vertici nella memoria della GPU, tramite un oggetto vertex buffer chiamato VBO. Come prossima cosa, vogliamo creare delle shaders che processino questi dati.
