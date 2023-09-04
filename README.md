@@ -25,3 +25,21 @@ L'approccio moderno richiede allo sviluppatore di comprendere realmente OpenGL e
 Tutte le versioni successive ad OpenGL 3.3 aggiungono utili feature extra senza cambiare i meccanismi principali; le nuove versioni introducono solamente nuovi metodo pià efficienti o utili per svolgere le stesse operazioni.
 
 Tutti i concetti e le tecniche rimangono le stesse per tutte le versioni moderne di OpenGL, quindi è perfettamente valido imparare utilizzando la versione 3.3 per poi imparare eventualmente anche le nuove funzionalità.
+
+### Extensions
+Una grande feature di OpenGL è il suo supporto delle estensioni. Ogni volta che una compagnia grafica inventa una nuova tecnica o una nuova ottimizzazione importante per il rendering, queste vengono solitamente poste in estensioni implementate nei driver.
+Se l'hardware su cui viene eseguita un'applicazione supporta tali estensioni, gli sviluppatori possono utilizzare le funzionalità offerte dall'estensione.
+
+Quando un'estension è populare o particolarmente utile è possibile che diventa parte di una futura versione di OpenGL.
+
+Lo sviluppatore deve interrogare la macchina per vedere se l'estensione che ha intenzione di utilizzare è disponibile:
+```cpp
+if(GL_ARB_extension_name)
+{
+// Do cool new and modern stuff supported by hardware
+}
+else
+{
+// Extension not supported: do it the old way
+}
+```
