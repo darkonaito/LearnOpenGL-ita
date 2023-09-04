@@ -216,3 +216,24 @@ I dati riguardanti la posizioen del triangolo non cambiano, sono usati molti, e 
 Se, per esempio, avessimo un buffer con dati che tendono a cambiare spesso, un tipo di utilizzo ```GL_DYNAMIC_DRAW``` ci assicura che la scheda grafica ponga qui dati in un posto nella memoria che ne consenta un accesso veloce.
 
 Per ora, abbiamo immagazzinato i dati dei vertici nella memoria della GPU, tramite un oggetto vertex buffer chiamato VBO. Come prossima cosa, vogliamo creare delle shaders che processino questi dati.
+
+### Vertex shader
+
+La prima cosa che dobbiamo fare è scrivere la vertex shader nel linguaggio GLSL, poi compilarla in modo tale da poterla utilizzare nella nostra applicazione. 
+
+Qui sotto vi è il codice di una vertex shader estremamente basilare in GLSL:
+```cpp
+#version 330 core
+layout (location = 0) in vec3 aPos;
+void main()
+{
+gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+}
+```
+Come puoi notare, GLSL si assomiglia al C. Ogni shader inizia con una dichiarazione della propria versione; inoltre, specifichiamo esplicitamente che siamo intenzionati ad utilizzare le funzionalità core.
+
+Successivamente, dichiariamo gli attributi dei vertici in input tramite la parola chiave ```in```.
+Per adesso, ci interessano solamente i dati della posizione, quindi necessitiamo di un solo vertex attribute.
+
+GLSL ha un tipo di dato "vector", che contiene dagli 1 ai 4 float, in base alla cifra suffissa.
+Dato che ogni vertici ha una coordinata 3D, creiamo una variabile di input ```vec3``` con il nome ```aPos```. Specifichiamo inoltre la locazione della variabile di input tramite ```layout (location = 0)```, di cui capirai dopo lo scopo.
