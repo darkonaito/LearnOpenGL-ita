@@ -117,4 +117,8 @@ Questa può essere divisa in due grandi parti: la prima trasofrma le coordinate 
 
 La pipeline può essere divisa in più step, ognuno dei quali necessita dell'output della precedente come proprio input. Tutti questi step sono altamente specializzati, e possono facilmente essere svolti in parallelo.
 
-Per via della loro natura parallela, le 
+Per via della loro natura parallela, le schede grafiche di oggi hanno migliaia di piccoli processori che trattano i dati dentro la pipeline. Questi processori eseguono piccoli programmi sulla GPU chiamati "shaders".
+
+Alcune di queste shaders sono configurabili dallo sviluppatore, e ciò ci permette di scriverne di nostre, che rimpiazziono quelle di default. Ciò ci da molto più controllo sulle singolari parti della pipeline.
+
+Le shaders son scritte nel OpenGL Shading Language, GLSL.
