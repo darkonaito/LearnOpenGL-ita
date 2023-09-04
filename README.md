@@ -19,7 +19,7 @@ La "immediate mode" è particolarmente facile da usare e capire, ma anche estrem
 
 Quando si usa il "core-profile" di OpenGL, questo ci obbliga ad usare pratiche moderne.
 
-La "immediate mode" astraeva molto dalle effettive operazioni che OpenGL svolgeva, e mentre er facile da imparare, in questo modo era difficile capire come OpenGL effettivamente funzionasse. 
+La "immediate mode" astraeva molto dalle effettive operazioni che OpenGL svolgeva, e mentre era facile da imparare, in questo modo era difficile capire come OpenGL effettivamente funzionasse. 
 L'approccio moderno richiede allo sviluppatore di comprendere realmente OpenGL e la programmazione grafica, e, mentre è un po' difficile, garantisce una maggiore flessibilità, più efficienza e soprattutto una maggiore comprensione della programmazione grafica.
 
 Tutte le versioni successive ad OpenGL 3.3 aggiungono utili feature extra senza cambiare i meccanismi principali; le nuove versioni introducono solamente nuovi metodo pià efficienti o utili per svolgere le stesse operazioni.
