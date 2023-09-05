@@ -293,7 +293,6 @@ if(!success)
 Lo scopo focale della fragment shader è quello di calcolare il colore di output dei tuoi pixel.
 
 * I colori nella grafica computerizzata son rappresentati come array di 4 valori: rosso, verde, blu e alfa (opacità), solitamente abbreviati come RGBA. Quando definiamo un colore in OpenGL o GLSL settiamo il valore di ogni componente da 0.0 a 1.0.
-
 ```cpp
 #version 330 core
 out vec4 FragColor;
@@ -302,3 +301,9 @@ void main()
     FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
 }
 ```
+La fragment shader richiede una variabile di output soltanto, che consiste in un vettore di quattro elementi che rappresenta il colore finale del pixel. Possiamo dichiarare valori di output tramite la parola chiave ```out```, che qui abbiamo rinominato ```FragColor```.
+
+### Shader program
+Per usare le shader che abbiamo appena compilato, dobbiamo linkarle a un shader program object e poi attivarle quando renderizziamo oggetti. Le shader del shader program attivato verranno usate quando effettuermo chiamate di rendering.
+
+Quando linkiamo le shader in un programma, l'output di ogni shader viene usato come input della prossima. Qua potresti ottenere errori di linking se gli output e input non corrispondono.
