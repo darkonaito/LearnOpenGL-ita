@@ -237,7 +237,7 @@ Successivamente, dichiariamo gli attributi dei vertici in input tramite la parol
 Per adesso, ci interessano solamente i dati della posizione, quindi necessitiamo di un solo vertex attribute.
 
 GLSL ha un tipo di dato "vector", che contiene dagli 1 ai 4 float, in base alla cifra suffissa.
-Dato che ogni vertici ha una coordinata 3D, creiamo una variabile di input ```vec3``` con il nome ```aPos```. Specifichiamo inoltre la locazione della variabile di input tramite ```layout (location = 0)```, di cui capirai dopo lo scopo.
+Dato che ogni vertici ha una coordinata 3D, creiamo una variabile di input ```vec3``` con il nome ```aPos```. Specifichiamo inoltre la localizzazione della variabile di input tramite ```layout (location = 0)```, di cui capirai dopo lo scopo.
 
 * Vettori: i vettori rappresentano posizioni e direzioni nello spazio, e hanno proprietà utili.
 Un vettore in GLSL ha una grandezza massima di 4, e ognuno dei suoi valori può essere ottenuto tramite ```vec.x, vec.y, vec.z, vec.w```. Il valore vec.w non è utilizzato come una posizione, ma è utile per una cosa chiamata "perspective division", di cui si parlerà più in avanti.
@@ -350,3 +350,17 @@ I nostri dati del buffer di buffer son formati in questo modo:
 * Ogni posizione è composta da tre di questi valori.
 * Non ci son spazi tra i vari gruppi di valori, sono "tightly packed".
 * Il primo dato si trova all'inizio del buffer.
+
+Con queste conoscenze a disposizione, possiamo dire ad OpenGL come interpretare i dati dei vertici utilizzando la funzione ```glVertexAttribPointer```:
+```cpp
+glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),
+                      (void*)0
+);
+glEnableVertexAttribArray(0);
+```
+* Il primo parametro specifica che vertex attribute vogliamo configurare. Abbiamo specificato la localizzazione dell'attributo ```position``` con ```layout (location = 0)```. Questo impìosta la posizione dell'attributo a 0 e, dato che vogliamo passare dati a questo attributo, passiamo come argomento 0.
+* Il prossimo aromgento specifica la grandezza di ogni attributo.
+* Il terzo argomento specifica il tipo di dato, in questo caso ```GL_FLOAT```.
+* Il parametro successivo specifica se vogliamo che i dati vengano normalizzati. Nel nostro caso no, quindi lasciamo ```GL_FALSE```.
+* Il quinto argomento è detto "stride" e indica quanto spazio c'è tra vertex attribute consecutivi. Dato che un gruppo di dati di posizioni è sempre posizionato 3 ```float``` dopo il precedente, forniamo tale valore, 3, come stride. In questo caso, essendo l'array strettamente impachettato, avremmo potuto specificare come stride 0, e lasciare fosse OpenGL a determinarlo in automatico.
+* 
