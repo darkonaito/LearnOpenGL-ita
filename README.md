@@ -527,7 +527,7 @@ glEnableVertexAttribArray(0);
 // ..:: Drawing code (in render loop) :: ..
 glUseProgram(shaderProgram);
 glBindVertexArray(VAO);
-glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0)
+glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 glBindVertexArray(0);
 ```
 L'immagine a sinistra dovrebbe essere familiare, mentre quella a destra è un rettangolo disegnato in "wirframe mode". La modalità wireframe mostra che, effettivamente, il rettangolo è composta da due triangoli.
