@@ -271,3 +271,20 @@ Successivamente colleghiamo il codice sorgente della shader all'oggetto shader e
 glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
 glCompileShader(vertexShader);
 ```
+La funzione ```glShaderSource``` richiede l'oggetto shader da compilare come primo argomento. Il secondo specifica quante stringe stiamo passando come codice sorgente, in questo caso una. Il terzo parametro è l'effettivo codice sorgente, e il quarto parametro possiamo lasciarlo a ```NULL```.
+
+* Puoi verificare se e quali errori si son verificati durante la compilazione della shade in questo modo:
+```cpp
+int success;
+char infoLog[512];
+glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+```
+Se la compilazione non è andata a buon finte, poi ottenere il relativo messaggio di errore tramite ```glGetShaderInfoLog```:
+```cpp
+if(!success)
+{
+glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"
+          << infoLog << std::endl;
+}
+```
