@@ -462,3 +462,31 @@ Lo stesso rettangolo si potrebbe specificare con solo 4 vertici, invece che 6. Q
 
 Una soluzione potrebbe essere quella di memorizzare solo i vertici unici e poi specificare in che ordine vogliamo siano disegnati; un element buffer object funziona esattamente così.
 
+Un EBO è un buffer, proprio come un buffer di vertici, che immagazina gli indici che OpenbGL utilizza per decidere che vertici disegnare. Questa tecnica chiamata "index drawing" è esattamente la soluzione al nostro problema. 
+
+Per iniziare specifichiamo i vertici (quelli unici) e gli indici da usare per disegnare il rettangolo:
+```cpp
+float vertices[] = {
+     0.5f,  0.5f, 0.0f, // top right
+     0.5f, -0.5f, 0.0f, // bottom right
+    -0.5f, -0.5f, 0.0f, // bottom left
+    -0.5f,  0.5f, 0.0f // top left
+};
+unsigned int indices[] = { // note that we start from 0!
+    0, 1, 3, // first triangle
+    1, 2, 3 // second triangle
+};
+```
+Come prossimo passo creiamo il buffer di elementi:
+```cpp
+unsigned int EBO;
+glGenBuffers(1, &EBO);
+```
+Abbiniamo poi il EBO e copiamo gli indici dentro il buffer tramite ```glBufferData```. Queste chiamate sono da specificare tra una chiamata di abbinamento e una di dis-abbinamento, e questa volta specifichiamo ```GL_ELEMENT_ARRAY_BUFFER``` come tipo di buffer.
+```cpp
+glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
+             GL_STATIC_DRAW)
+;
+```
+L'ultima cosa da fare è rimpiazzare ```glDrawArrays``` con ```glDrawElements``` per indicare che vogliamo renderizzare i triangoli da un buffer di indici. Quando si usa ```glDrawElements``` si disegna utilizzando gli indici 
