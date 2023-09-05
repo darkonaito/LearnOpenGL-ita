@@ -343,4 +343,10 @@ Per adesso, abbiamo inviato i dati dei vertex in input alla GPU, e le abbiamo sp
 La vertex shader ci permette di specificare qualsiasi input vogliamo sottoforma di vertex attributes, e mentre ciò ci dona grande flessibilitò, significa anche che dobbiamo manualmente specificare quali parti dei nostri dati in input vanno ad un certo vertex attribute nella shader. Ciò significa che dobbiamo specificare ad OpenGL come interpretare i dati dei vertici prima di renderizzare.
 
 I nostri dati del buffer di buffer son formati in questo modo:
+
 ![](https://i.imgur.com/mM7k2pT.png)
+
+* I dati sulla posizione son immagazzinati come valori a virgola mobila a 32 bit (4 byte).
+* Ogni posizione è composta da tre di questi valori.
+* Non ci son spazi tra i vari gruppi di valori, sono "tightly packed".
+* Il primo dato si trova all'inizio del buffer.
