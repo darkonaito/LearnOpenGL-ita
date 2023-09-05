@@ -496,3 +496,40 @@ glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 ```
 Il primo argomento specifica la modalità in cui vogliamo disegnare. Il secondo è il numero di elementi che vogliamo disegnare - in questo caso 6 indici. Il terzo argomento è il tipo di dato degli indici. L'ultimo argomento ci permette di specificare un offset nell'EBO, ma lo lasciamo a 0.
 
+La funzione ```glDrawElements``` prende gli indici dall'EBO abbinato al momento al target ```GL_ELEMENT_ARRAY_BUFFER```. 
+
+Dobbiamo abbinare il EBO corrispondente ogni volta che vogliamo renderizzare un oggetto tramite indici, il che è nuovamente tedioso.
+
+Per fortuna, il VAO tiene traccia degli abbinamenti di element buffer object. L'ultimo oggetto buffer di elementi che viene abbinato mentre un VAO è abbinato, è immagazzinato come il EBO di tale VAO. Successivamente, basterà abbinare quel VAO per abbinare anche il relativo EBO.
+
+![](https://i.imgur.com/cHuy3oN.png)
+
+_Un VAO memorizza le chiamate a ```glBindBuffer``` quando il target è ```GL_ELEMENT_ARRAY_BUFFER```. Ciò significa che memorizza anche le chiamate di dis-abbinamento, perciò assicurati di non dis-abbinare il EBO prima di farlo con il VAO, altrimenti il primo non verrà configurato._
+
+```cpp
+// ..:: Initialization code :: ..
+// 1. bind Vertex Array Object
+glBindVertexArray(VAO);
+// 2. copy our vertices array in a vertex buffer for OpenGL to use
+glBindBuffer(GL_ARRAY_BUFFER, VBO);
+glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+// 3. copy our index array in a element buffer for OpenGL to use
+glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
+             GL_STATIC_DRAW)
+;
+// 4. then set the vertex attributes pointers
+glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),
+                      (void*)0)
+;
+glEnableVertexAttribArray(0);
+[...]
+// ..:: Drawing code (in render loop) :: ..
+glUseProgram(shaderProgram);
+glBindVertexArray(VAO);
+glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0)
+glBindVertexArray(0);
+```
+L'immagine a sinistra dovrebbe essere familiare, mentre quella a destra è un rettangolo disegnato in "wirframe mode".
+
+![](https://i.imgur.com/8nMXe8w.png)
