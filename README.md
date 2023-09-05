@@ -367,3 +367,23 @@ glEnableVertexAttribArray(0);
 
 _Ogni vertex attribute prende i suoi dati dalla memoria gestita da un VBO, e il VBO che viene utilizzato è quello attualmente abbinato a ```GL_ARRAY_BUFFER``` quando si chiama ```glVertexAttribPointer```_.
 
+Adesso che abbiamo specificato come OpenGL debba interpretare i dati dei vertici, è necessario abilitarli utilizzando ```glEnableVertexAttribArray```, fornendogli come argomento la posizione del vertex attribute.
+
+E' tutto pronto: abbiamo inizializzato i dati dei vertici in un buffer utilizzando un vertex buffer object, abbiamo messo su una shader vertex e una fragment e detto ad OpenGL di linkare i dati dei vertici agli attribuiti dei vertici della vertex shader.
+
+Disegnare un oggetto, in OpenGL, funziona più o meno così:
+```cpp
+// 0. copy our vertices array in a buffer for OpenGL to use
+glBindBuffer(GL_ARRAY_BUFFER, VBO);
+glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+// 1. then set the vertex attributes pointers
+glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),
+                      (void*)0
+);
+glEnableVertexAttribArray(0);
+// 2. use our shader program when we want to render an object
+glUseProgram(shaderProgram);
+// 3. now draw the object
+someOpenGLFunctionThatDrawsOurTriangle();
+```
+Dobbiamo ripetere questo processo ogni volta che vogliamo disegnare un oggetto. Abbinare i buffer objects e configurare tutti i vertex attributes per ognuno di questi oggetti diventa subito un processo tedioso.
