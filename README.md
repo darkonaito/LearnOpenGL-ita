@@ -428,3 +428,15 @@ glBindVertexArray(VAO);
 someOpenGLFunctionThatDrawsOurTriangle();
 ```
 Solitamente, quando si vogliono disegnare più oggetti, per prima cosa si generano e configurano tutti i VAO, e li si memorizza per un utilizzo successivo. Quando vogliamo disegnare uno di quelli oggetti, prendiamo il VAO corrispondente, lo abbiniamo, disegnamo l'oggetto e poi dis-abbiniamo il VAO nuovamente.
+
+### The triangle we've all been waiting for
+
+Per disegnare un oggetto a nostra scelta, OpenGL ci fornisce la funzione ```glDrawArrays```, che disegna primitivi utilizzando la sheder attualmente attiva, la configurazione di vertex attribute precedentemente definita e i dati dei vertici del VBO.
+```cpp
+glUseProgram(shaderProgram);
+glBindVertexArray(VAO);
+glDrawArrays(GL_TRIANGLES, 0, 3);
+```
+La funzione ```glDrawArrays``` prende come primo argomento il tipo di primitivo che vogliamo disegnare. Il secondo argomento specifica l'indice di inizio dell'array di vertici che vogliamo disegnare - lo impostiamo a zero. L'ultimo argomento specifica quanti vertici vogliamo disegnare - in questo caso 3.
+
+![](https://i.imgur.com/6WaoYcd.png)
