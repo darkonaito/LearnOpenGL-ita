@@ -530,6 +530,9 @@ glBindVertexArray(VAO);
 glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0)
 glBindVertexArray(0);
 ```
-L'immagine a sinistra dovrebbe essere familiare, mentre quella a destra è un rettangolo disegnato in "wirframe mode".
+L'immagine a sinistra dovrebbe essere familiare, mentre quella a destra è un rettangolo disegnato in "wirframe mode". La modalità wireframe mostra che, effettivamente, il rettangolo è composta da due triangoli.
 
 ![](https://i.imgur.com/8nMXe8w.png)
+
+_Per disegnare i triangoli in modalità wireframe, puoi configurare come OpenGL disegni i suoi primitivi tramite ```glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)```. Il primo argomento dice che vogliamo applicarlo sul fronte e il retro di tutti i triangoli, mentr il secondo dice di disegnarli come linee. Ogni successiva chiamata di rendering disegnerà i triangoli in modalità wireframe, finché non impostiamo di nuovo la modalità originale tramite ```glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)```._
+
