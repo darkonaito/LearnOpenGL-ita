@@ -427,3 +427,4 @@ glUseProgram(shaderProgram);
 glBindVertexArray(VAO);
 someOpenGLFunctionThatDrawsOurTriangle();
 ```
+Solitamente, quando si vogliono disegnare più oggetti, per prima cosa si generano e configurano tutti i VAO, e li si memorizza per un utilizzo successivo. Quando vogliamo disegnare uno di quelli oggetti, prendiamo il VAO corrispondente, lo abbiniamo, disegnamo l'oggetto e poi dis-abbiniamo il VAO nuovamente.
