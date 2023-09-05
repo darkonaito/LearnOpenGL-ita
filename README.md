@@ -341,3 +341,6 @@ Per adesso, abbiamo inviato i dati dei vertex in input alla GPU, e le abbiamo sp
 ### Linking Vertex Attributes
 
 La vertex shader ci permette di specificare qualsiasi input vogliamo sottoforma di vertex attributes, e mentre ciò ci dona grande flessibilitò, significa anche che dobbiamo manualmente specificare quali parti dei nostri dati in input vanno ad un certo vertex attribute nella shader. Ciò significa che dobbiamo specificare ad OpenGL come interpretare i dati dei vertici prima di renderizzare.
+
+I nostri dati del buffer di buffer son formati in questo modo:
+![](https://i.imgur.com/mM7k2pT.png)
