@@ -336,4 +336,4 @@ Non scordiamo di eliminare le shader una volta che le abbiamo linkate: non ci se
 glDeleteShader(vertexShader);
 glDeleteShader(fragmentShader);
 ```
-Per adesso, abbiamo inviato i dati dei vertex in input alla GPU, e le abbiamo spiegato come dovrebbe processare i dati dei vertici all'interno delle due shaders. Tuttavia, OpenGL ancora non sa come interpretare i dati dei vertici in memoria e come dovrebbe collegarli agli attributi della vertex shader. 
+Per adesso, abbiamo inviato i dati dei vertex in input alla GPU, e le abbiamo spiegato come dovrebbe processare i dati dei vertici all'interno delle due shaders. Tuttavia, OpenGL ancora non sa come interpretare i dati dei vertici in memoria e come collegarli agli attributi della vertex shader. 
