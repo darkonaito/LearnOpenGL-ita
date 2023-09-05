@@ -288,3 +288,17 @@ if(!success)
             << infoLog << std::endl;
 }
 ```
+### Fragment shader
+
+Lo scopo focale della fragment shader è quello di calcolare il colore di output dei tuoi pixel.
+
+* I colori nella grafica computerizzata son rappresentati come array di 4 valori: rosso, verde, blu e alfa (opacità), solitamente abbreviati come RGBA. Quando definiamo un colore in OpenGL o GLSL settiamo il valore di ogni componente da 0.0 a 1.0.
+
+```cpp
+#version 330 core
+out vec4 FragColor;
+void main()
+{
+    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+}
+```
