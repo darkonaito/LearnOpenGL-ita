@@ -307,3 +307,33 @@ La fragment shader richiede una variabile di output soltanto, che consiste in un
 Per usare le shader che abbiamo appena compilato, dobbiamo linkarle a un shader program object e poi attivarle quando renderizziamo oggetti. Le shader del shader program attivato verranno usate quando effettuermo chiamate di rendering.
 
 Quando linkiamo le shader in un programma, l'output di ogni shader viene usato come input della prossima. Qua potresti ottenere errori di linking se gli output e input non corrispondono.
+
+Creiamo un programma così:
+```cpp
+unsigned int shaderProgram;
+shaderProgram = glCreateProgram();
+```
+La funzione ```glCreateProgram``` crea un programma e restituisce il suo ID. Adesso dobbiamo collegare le shader precedentemente compilate al program object e linkarle tramite ```glLinkProgram```:
+```cpp
+glAttachShader(shaderProgram, vertexShader);
+glAttachShader(shaderProgram, fragmentShader);
+glLinkProgram(shaderProgram);
+```
+Per controllare se il linking è andato a buon fine possiamo fare così:
+```cpp
+glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+if(!success) {
+    glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+...
+}
+```
+Il risultato è un oggetto programma che possiamo attivare chiamando ```glUseProgram```:
+```cpp
+glUseProgram(shaderProgram);
+```
+Non scordiamo di eliminare le shader una volta che le abbiamo linkate: non ci servono più!:
+```cpp
+glDeleteShader(vertexShader);
+glDeleteShader(fragmentShader);
+```
+Per ad
