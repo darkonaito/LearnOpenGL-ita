@@ -364,3 +364,5 @@ glEnableVertexAttribArray(0);
 * Il parametro successivo specifica se vogliamo che i dati vengano normalizzati. Nel nostro caso no, quindi lasciamo ```GL_FALSE```.
 * Il quinto argomento è detto "stride" e indica quanto spazio c'è tra vertex attribute consecutivi. Dato che un gruppo di dati di posizioni è sempre posizionato 3 ```float``` dopo il precedente, forniamo tale valore, 3, come stride. In questo caso, essendo l'array strettamente impachettato, avremmo potuto specificare come stride 0, e lasciare fosse OpenGL a determinarlo in automatico.
 * L'ultimo argomento specifica l'offset di dove i dati iniziano nel buffer. In questo caso non v'è offset alcuno.
+
+_Ogni vertex attribute prende i suoi dati dalla memoria gestita da un VBO, e il VBO che viene utilizzato è quello attualmente abbinato a _```GL_ARRAY_BUFFER``` quando si chiama ```glVertexAttribPointer```_.
