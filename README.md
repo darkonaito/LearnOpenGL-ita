@@ -337,3 +337,7 @@ glDeleteShader(vertexShader);
 glDeleteShader(fragmentShader);
 ```
 Per adesso, abbiamo inviato i dati dei vertex in input alla GPU, e le abbiamo spiegato come dovrebbe processare i dati dei vertici all'interno delle due shaders. Tuttavia, OpenGL ancora non sa come interpretare i dati dei vertici in memoria e come collegarli agli attributi della vertex shader. 
+
+### Linking Vertex Attributes
+
+La vertex shader ci permette di specificare qualsiasi input vogliamo sottoforma di vertex attributes, e mentre ciò ci dona grande flessibilitò, significa anche che dobbiamo manualmente specificare quali parti dei nostri dati in input vanno ad un certo vertex attribute nella shader. Ciò significa che dobbiamo specificare ad OpenGL come interpretare i dati dei vertici prima di renderizzare.
