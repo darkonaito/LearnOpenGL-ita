@@ -440,3 +440,25 @@ glDrawArrays(GL_TRIANGLES, 0, 3);
 La funzione ```glDrawArrays``` prende come primo argomento il tipo di primitivo che vogliamo disegnare. Il secondo argomento specifica l'indice di inizio dell'array di vertici che vogliamo disegnare - lo impostiamo a zero. L'ultimo argomento specifica quanti vertici vogliamo disegnare - in questo caso 3.
 
 ![](https://i.imgur.com/6WaoYcd.png)
+
+### Element Buffer Objects
+Un'ultima cosa di cui è necessario parlare quando si tratta di renderizzare vertici è l'oggetto buffer degli elementi, EBO.
+
+Immagina di voler disegnare un rettangolo invece che un triangolo. Possiamo disegnarlo utilizzando due triangoli. Si generano i seguenti vertici:
+```cpp
+float vertices[] = {
+    // first triangle
+     0.5f, 0.5f, 0.0f, // top right
+     0.5f, -0.5f, 0.0f, // bottom right
+    -0.5f, 0.5f, 0.0f, // top left
+    // second triangle
+     0.5f, -0.5f, 0.0f, // bottom right
+    -0.5f, -0.5f, 0.0f, // bottom left
+    -0.5f,  0.5f, 0.0f // top left
+};
+```
+Come puoi vedere, ci sono delle ripetizioni nei vertici che abbiamo specificato. 
+Lo stesso rettangolo si potrebbe specificare con solo 4 vertici, invece che 6. Questa situazione non farà che peggiorare una volta che andremo a utilizzare modelli complessi con oltra i mille triangoli.
+
+Una soluzione potrebbe essere quella di memorizzare solo i vertici unici e poi specificare in che ordine vogliamo siano disegnati; un element buffer object funziona esattamente così.
+
