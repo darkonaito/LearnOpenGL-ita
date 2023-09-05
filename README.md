@@ -489,4 +489,10 @@ glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
              GL_STATIC_DRAW)
 ;
 ```
-L'ultima cosa da fare è rimpiazzare ```glDrawArrays``` con ```glDrawElements``` per indicare che vogliamo renderizzare i triangoli da un buffer di indici. Quando si usa ```glDrawElements``` si disegna utilizzando gli indici 
+L'ultima cosa da fare è rimpiazzare ```glDrawArrays``` con ```glDrawElements``` per indicare che vogliamo renderizzare i triangoli da un buffer di indici. Quando si usa ```glDrawElements``` si disegna utilizzando gli indici  forniti dal buffer di elementi momentaneamente abbinato:
+```cpp
+glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+```
+Il primo argomento specifica la modalità in cui vogliamo disegnare. Il secondo è il numero di elementi che vogliamo disegnare - in questo caso 6 indici. Il terzo argomento è il tipo di dato degli indici. L'ultimo argomento ci permette di specificare un offset nell'EBO, ma lo lasciamo a 0.
+
