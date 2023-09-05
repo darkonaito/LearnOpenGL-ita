@@ -402,3 +402,28 @@ Un vertex array memorizza le seguenti cose:
 
 ![](https://i.imgur.com/ctfftrX.png)
 
+```cpp
+unsigned int VAO;
+glGenVertexArrays(1, &VAO);
+```
+Per usare un VAO tutto ciò che si deve fare è abbinarlo utilizzando ```glBindVertexArray```. Da lì in poi si devono abbinare/configurare i VBO e attribute pointer corrispondenti e poi dis-abbinare il VAO per un utilizzo successivo.
+
+Appena vogliamo disegnare un oggetto, semplicemente abbiniamo il VAO con le impostazioni preferite prima di disegnarlo.
+```cpp
+// ..:: Initialization code (done once (unless your object frequently changes)) :: ..
+// 1. bind Vertex Array Object
+glBindVertexArray(VAO);
+// 2. copy our vertices array in a buffer for OpenGL to use
+glBindBuffer(GL_ARRAY_BUFFER, VBO);
+glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+// 3. then set our vertex attributes pointers
+glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof     (float), (void*)0)
+;
+glEnableVertexAttribArray(0);
+[...]
+// ..:: Drawing code (in render loop) :: ..
+// 4. draw the object
+glUseProgram(shaderProgram);
+glBindVertexArray(VAO);
+someOpenGLFunctionThatDrawsOurTriangle();
+```
