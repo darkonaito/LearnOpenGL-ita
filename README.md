@@ -387,3 +387,18 @@ glUseProgram(shaderProgram);
 someOpenGLFunctionThatDrawsOurTriangle();
 ```
 Dobbiamo ripetere questo processo ogni volta che vogliamo disegnare un oggetto. Abbinare i buffer objects e configurare tutti i vertex attributes per ognuno di questi oggetti diventa subito un processo tedioso.
+
+### Vertex Array Object
+Un vertex array object (VAO) può essere abbinato esattamente come un vertex buffer object, e ogni successiva chiamata a attributi dei vertici sarà memorizzata in quel VAO.
+
+Questo ha il vantaggio che quando si configurano dei vertex buffer pointers è necessario effettuare tali chiamate una sola volta e, quando si vuole disegnare l'oggetto, si può semplicemente abbinare il VAO corrispondente. Ciò rende molto facile passare da una configurazione all'altra.
+
+_OpenGL core ci obbliga ad utilizzare un VAO, così che sappia che fare dei nostri vertici in input._
+
+Un vertex array memorizza le seguenti cose:
+* Chiamate a ```glEnableVertexAttribArray``` o a ```glDisableVertexAttribArray```.
+* Configurazioni di attributi di vertici tramite ```glVertexAttribPointer```.
+* Vertex buffer objects associati a attributi dei vertici tramite chiamate a ```glVertexAttribPointer```.
+
+![](https://i.imgur.com/ctfftrX.png)
+
