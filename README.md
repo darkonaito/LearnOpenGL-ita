@@ -247,3 +247,27 @@ La vertex shader in question è probabilmente la pià semplice che si possa imma
 Nelle applicazioni reali, i dati in ingresso solitamente non son normalizzati, e vanno quindi prima trasformati in coordinate che cadano entro la regione visibile di OpenGL.
 
 ### Compiling a shader
+
+Prendiamo il codice sorgente della shader e lo immagazziniamo in una stringa C costante.
+```cpp
+const char *vertexShaderSource = "#version 330 core\n"
+    "layout (location = 0) in vec3 aPos;\n"
+    "void main()\n"
+    "{\n"
+    " gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+    "}\0"
+;
+```
+Per utilizzare questa shader, OpenGL deve compilarla dinamicamente durante l'esecuzione del programma.
+
+La prima cosa che dobbiamo fare è creare un shader object, a cui ci riferisce tramite un ID. Salviamo la shader come un ```unsigned int``` e creiamo la shader con ```glCreateShader```:
+```cpp
+unsigned int vertexShader;
+vertexShader = glCreateShader(GL_VERTEX_SHADER);
+```
+Forniamo il tipo di shader che vogliamo creare come argomento a ```glCreateShader```.
+Successivamente colleghiamo il codice sorgente della shader all'oggetto shader e compiliamo:
+```cpp
+glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+glCompileShader(vertexShader);
+```
