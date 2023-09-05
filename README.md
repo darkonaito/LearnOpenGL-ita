@@ -283,8 +283,8 @@ Se la compilazione non è andata a buon finte, poi ottenere il relativo messaggi
 ```cpp
 if(!success)
 {
-glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"
-          << infoLog << std::endl;
+    glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
+    std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"
+            << infoLog << std::endl;
 }
 ```
