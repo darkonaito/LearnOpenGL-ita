@@ -1,4 +1,4 @@
->Un ringraziamento speciale va a Tilo', benemenito editore.
+>Un ringraziamento speciale va a Tilo', benemenito editore, e a Madao, programmatore del popolo.
 
 # Getting started
 ## OpenGL
