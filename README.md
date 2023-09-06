@@ -228,7 +228,7 @@ layout (location = 0) in vec3 aPos;
 
 void main()
 {
-g   l_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
 }
 ```
 Come puoi notare, GLSL si assomiglia al C. Ogni shader inizia con una dichiarazione della propria versione; inoltre, specifichiamo esplicitamente che siamo intenzionati ad utilizzare le funzionalità core.
