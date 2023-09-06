@@ -346,7 +346,7 @@ I nostri dati del buffer di buffer son formati in questo modo:
 
 ![](https://i.imgur.com/mM7k2pT.png)
 
-* I dati sulla posizione son immagazzinati come valori a virgola mobila a 32 bit (4 byte).
+* I dati sulla posizione son immagazzinati come valori a virgola mobile a 32 bit (4 byte).
 * Ogni posizione è composta da tre di questi valori.
 * Non ci son spazi tra i vari gruppi di valori, sono "tightly packed".
 * Il primo dato si trova all'inizio del buffer.
