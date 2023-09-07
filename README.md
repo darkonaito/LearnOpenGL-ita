@@ -536,3 +536,8 @@ L'immagine a sinistra dovrebbe essere familiare, mentre quella a destra è un re
 
 _Per disegnare i triangoli in modalità wireframe, puoi configurare come OpenGL disegni i suoi primitivi tramite ```glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)```. Il primo argomento dice che vogliamo applicarlo sul fronte e il retro di tutti i triangoli, mentr il secondo dice di disegnarli come linee. Ogni successiva chiamata di rendering disegnerà i triangoli in modalità wireframe, finché non impostiamo di nuovo la modalità originale tramite ```glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)```._
 
+## Shaders
+
+Le shaders son piccoli programmi che risiedono sulla GPU; ognuna di loro ha un compito specifico all'interno della pipeline grafica.
+
+Non sono altro che programmi che trasformano input in output, e non possono comunicare tra loro se non tramite tale coppia.
