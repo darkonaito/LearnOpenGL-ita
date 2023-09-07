@@ -541,3 +541,9 @@ _Per disegnare i triangoli in modalità wireframe, puoi configurare come OpenGL 
 Le shaders son piccoli programmi che risiedono sulla GPU; ognuna di loro ha un compito specifico all'interno della pipeline grafica.
 
 Non sono altro che programmi che trasformano input in output, e non possono comunicare tra loro se non tramite tale coppia.
+
+### GLSL
+
+Le shaders sono scritte in un linguaggio simile al C chiamato GLSL, che è stato sviluppato appositamente per l'utilizzo nel campo della grafica, e che presenta perciò feature utili legate alla manipolazione di vettori e matrici.
+
+Le shaders iniziano sempre con la dichiarazione della versione, seguita da una lista di variabili di input e di output, uniforms e la funziona ```main```, che è il punto di ingresso di ogni shader, dove si processano le variabili di input e i valori in output.
