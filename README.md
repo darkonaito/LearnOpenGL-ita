@@ -1,4 +1,4 @@
->Un ringraziamento speciale va a Tilo', benemenito editore.
+>Un ringraziamento speciale va a Tilo', benemenito editore, e a Madao, programmatore del popolo.
 
 # Getting started
 ## OpenGL
@@ -228,7 +228,7 @@ layout (location = 0) in vec3 aPos;
 
 void main()
 {
-g   l_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
 }
 ```
 Come puoi notare, GLSL si assomiglia al C. Ogni shader inizia con una dichiarazione della propria versione; inoltre, specifichiamo esplicitamente che siamo intenzionati ad utilizzare le funzionalità core.
@@ -346,7 +346,7 @@ I nostri dati del buffer di buffer son formati in questo modo:
 
 ![](https://i.imgur.com/mM7k2pT.png)
 
-* I dati sulla posizione son immagazzinati come valori a virgola mobila a 32 bit (4 byte).
+* I dati sulla posizione son immagazzinati come valori a virgola mobile a 32 bit (4 byte).
 * Ogni posizione è composta da tre di questi valori.
 * Non ci son spazi tra i vari gruppi di valori, sono "tightly packed".
 * Il primo dato si trova all'inizio del buffer.
@@ -358,8 +358,8 @@ glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),
 );
 glEnableVertexAttribArray(0);
 ```
-* Il primo parametro specifica che vertex attribute vogliamo configurare. Abbiamo specificato la localizzazione dell'attributo ```position``` con ```layout (location = 0)```. Questo impìosta la posizione dell'attributo a 0 e, dato che vogliamo passare dati a questo attributo, passiamo come argomento 0.
-* Il prossimo aromgento specifica la grandezza di ogni attributo.
+* Il primo parametro specifica che vertex attribute vogliamo configurare. Abbiamo specificato la localizzazione dell'attributo ```position``` con ```layout (location = 0)```. Questo imposta la posizione dell'attributo a 0 e, dato che vogliamo passare dati a questo attributo, passiamo come argomento 0.
+* Il prossimo argomento specifica la grandezza di ogni attributo; in questo caso abbiamo un vec3, che è composto da 3 valori.
 * Il terzo argomento specifica il tipo di dato, in questo caso ```GL_FLOAT```.
 * Il parametro successivo specifica se vogliamo che i dati vengano normalizzati. Nel nostro caso no, quindi lasciamo ```GL_FALSE```.
 * Il quinto argomento è detto "stride" e indica quanto spazio c'è tra vertex attribute consecutivi. Dato che un gruppo di dati di posizioni è sempre posizionato 3 ```float``` dopo il precedente, forniamo tale valore, 3, come stride. In questo caso, essendo l'array strettamente impachettato, avremmo potuto specificare come stride 0, e lasciare fosse OpenGL a determinarlo in automatico.
@@ -530,7 +530,7 @@ glBindVertexArray(VAO);
 glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 glBindVertexArray(0);
 ```
-L'immagine a sinistra dovrebbe essere familiare, mentre quella a destra è un rettangolo disegnato in "wirframe mode". La modalità wireframe mostra che, effettivamente, il rettangolo è composta da due triangoli.
+L'immagine a sinistra dovrebbe essere familiare, mentre quella a destra è un rettangolo disegnato in "wireframe mode". La modalità wireframe mostra che, effettivamente, il rettangolo è composta da due triangoli.
 
 ![](https://i.imgur.com/8nMXe8w.png)
 
