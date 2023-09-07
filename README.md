@@ -548,7 +548,7 @@ Le shaders sono scritte in un linguaggio simile al C chiamato GLSL, che è stato
 
 Le shaders iniziano sempre con la dichiarazione della versione, seguita da una lista di variabili di input e di output, uniforms e la funziona ```main```, che è il punto di ingresso di ogni shader, dove si processano le variabili di input e i valori in output.
 
-```cpp
+```glsl
 #version version_number
 
 in type in_variable_name;
