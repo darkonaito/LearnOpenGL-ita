@@ -568,7 +568,7 @@ void main()
 ```
 Quando parliamo in particolare della vertex shader, ogni variabile in input è detta "vertex attribute". C'è un massimo di attributi dei vertici che ci è permesso dichiarare, e dipende dalle limitazioni hardware.
 
-OpeGL garantisce almeno 16 vertex attributes da 4 componenti, ma alcune piattaforme potrebbero averne disponibili in numero maggiore; puoi verificare la quantità di vertex attributes disponibili tramite ```GL_MAX_VERTEX_ATTRIBS```:
+OpenGL garantisce almeno 16 vertex attributes da 4 componenti, ma alcune piattaforme potrebbero averne disponibili in numero maggiore; puoi verificare la quantità di vertex attributes disponibili tramite ```GL_MAX_VERTEX_ATTRIBS```:
 ```cpp
 int nrAttributes;
 glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
