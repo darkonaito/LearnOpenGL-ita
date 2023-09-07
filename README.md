@@ -547,3 +547,31 @@ Non sono altro che programmi che trasformano input in output, e non possono comu
 Le shaders sono scritte in un linguaggio simile al C chiamato GLSL, che è stato sviluppato appositamente per l'utilizzo nel campo della grafica, e che presenta perciò feature utili legate alla manipolazione di vettori e matrici.
 
 Le shaders iniziano sempre con la dichiarazione della versione, seguita da una lista di variabili di input e di output, uniforms e la funziona ```main```, che è il punto di ingresso di ogni shader, dove si processano le variabili di input e i valori in output.
+
+```cpp
+#version version_number
+
+in type in_variable_name;
+in type in_variable_name;
+
+out type out_variable_name;
+
+uniform type uniform_name;
+
+void main()
+{
+    // process input(s) and do some weird graphics stuff
+    ...
+    // output processed stuff to output variable
+    out_variable_name = weird_stuff_we_processed;
+}
+```
+Quando parliamo in particolare della vertex shader, ogni variabile in input è detta "vertex attribute". C'è un massimo di attributi dei vertici che ci è permesso dichiarare, e dipende dalle limitazioni hardware.
+
+OpeGL garantisce almeno 16 vertex attributes da 4 componenti, ma alcune piattaforme potrebbero averne disponibili in numero maggiore; puoi verificare la quantità di vertex attributes disponibili tramite ```GL_MAX_VERTEX_ATTRIBS```:
+```cpp
+int nrAttributes;
+glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
+std::cout << "Maximum nr of vertex attributes supported: " << nrAttributes
+          << std::endl;
+```
