@@ -358,7 +358,7 @@ glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),
 );
 glEnableVertexAttribArray(0);
 ```
-* Il primo parametro specifica che vertex attribute vogliamo configurare. Abbiamo specificato la localizzazione dell'attributo ```position``` con ```layout (location = 0)```. Questo impìosta la posizione dell'attributo a 0 e, dato che vogliamo passare dati a questo attributo, passiamo come argomento 0.
+* Il primo parametro specifica che vertex attribute vogliamo configurare. Abbiamo specificato la localizzazione dell'attributo ```position``` con ```layout (location = 0)```. Questo imposta la posizione dell'attributo a 0 e, dato che vogliamo passare dati a questo attributo, passiamo come argomento 0.
 * Il prossimo argomento specifica la grandezza di ogni attributo; in questo caso abbiamo un vec3, che è composto da 3 valori.
 * Il terzo argomento specifica il tipo di dato, in questo caso ```GL_FLOAT```.
 * Il parametro successivo specifica se vogliamo che i dati vengano normalizzati. Nel nostro caso no, quindi lasciamo ```GL_FALSE```.
