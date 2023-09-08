@@ -605,8 +605,8 @@ Puoi utilizzare una qualsiasi combinazione di massimo 4 lettere per creare un nu
 
 Possiamo anche passare i vettori come argomenti a costruttori di altri vettori, diminuendo il numero di argomenti richiesti:
 ```cpp
-vec2 vect       = vec2(0.5, 0.7);
-vec4 result     = vec4(vect, 0.0, 0.0);
+vec2 vect        = vec2(0.5, 0.7);
+vec4 result      = vec4(vect, 0.0, 0.0);
 vec4 otherResult = vec4(result.xyz, 1.0);
 ```
 
