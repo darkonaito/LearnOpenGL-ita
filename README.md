@@ -575,3 +575,18 @@ glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
 std::cout << "Maximum nr of vertex attributes supported: " << nrAttributes
           << std::endl;
 ```
+
+### Types
+
+Come tutti i linguaggi, anche GLSL ha tipi di dato utili a specificare che tipi di variabili vogliamo creare.
+GLSL è dotato della maggior parte dei tipi di dato basilari che abbiamo già visto in linguaggi come il C: ```int```, ```float```, ```double```, ```uint```, e ```bool```. 
+GLSL ha anche due tipi "container" che useremo un sacco, ovvero ```vectors``` e ```matrices```. 
+
+Un vettore in GLSL ha dagli 1 ai 4 componenti che risalgono a uno dei tipi specificati prima.
+I  vettori possono avere le seguenti forme:
+* ```vecn``` : il vettore default di n float.
+* ```bvecn```: un vettore di n booleani.
+* ```ivecn```: un vettore di n interi.
+* ```uvecn```: un vettore di n interi senza segno.
+* ```dvecn```: un vettore di n double.
+
