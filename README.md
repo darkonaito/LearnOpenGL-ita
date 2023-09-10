@@ -612,4 +612,8 @@ vec4 otherResult = vec4(result.xyz, 1.0);
 
 ### Ins and outs
 
- 
+Le shaders sono pezzi di un qualcosa di più grande, e perciò ci serve che abbiano input e output, in modo da poter condividere dati tra le varie parti della pipeline grafica.
+
+Il linguaggio GLSL definisce le parole chiave ```in``` e ```out``` specificamente per questo scopo. Ogni shader può specificare input e output utilizzando queste keyword, e ogni volta che una variabile in output di una shader combacia con quella in input della prossima, le due variabili vengono collegate. Tuttavia, la vertex shader e la fragment shader differiscono un po'.
+
+La vertex shader DEVE ricevere qualche forma di input, altrimenti sarebeb piuttosto inutile. Una differenza di tale shader è che riceve l'input direttamente dalla vertex data. Per definire come sono organizzati i dati dei vertici dichiariamo le variabili in input con metadata sulla loro localizzazione, così da poter configurare i vertex attributes sulla CPU. La vertex shader richiede quindi una specificazione di layout extra per i suoi input, così che possiamo collegarli ai dati dei vertici.
