@@ -671,3 +671,28 @@ void main()
     FragColor = ourColor;
 }
 ```
+
+Abbiamo dichiarato una uniform ```vec4 ourColor``` nella fragment shader e impostato l'output di questa al contenuto di tale uniform. Non c'è bisogno di passare prima per la vertex shader per passare qualcosa alla fragment shader. Non stiamo usando uniform nella vertex shader quindi non c'è motivo di definirne anche lì.
+
+_Se dichiari una uniform che non è utilizzata in nessuna shader, il compilatore la rimuoverà in silenzio: ciò può portare a alcuni errori frustranti!_
+
+L'uniform al momento è vuota. Come prima cosa, dobbiamo trovare l'index, la posizione di tale uniform nella nostra shader. Una volta che ce l'abbiamo, possiamo impostare il suo valore.
+```cpp
+float timeValue = glfwGetTime();
+float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
+int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
+glUseProgram(shaderProgram);
+glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+```
+Per prima cosa, otteniamo il tempo di esecuzione del programma. Successivamente, variamo il colore nel range 0.0 e 1.0 usando la funzione ```sin``` e memorizziamo il risultato in ```greenValue```.
+
+In seguito chiediamo ad OpenGL la posizione di ```ourcolor``` utilizzando ```glGetUniformLocation```. Forniamo alla funzione il programma della shader e il nome della uniform.
+Se ```glGetUniformLocation``` da come valore di ritorno ```-1```, significa che non è riuscito a trovare la posizione della uniform.
+
+Come ultima cosa, impostiamo il valore della uniform utilizzando ```glUniform4f```.
+
+Trovare la posizione di una uniform non richiede che il shader program sia utilizzato, mentre impostarne il valore sì.
+
+_Dato che OpenGL è al suo nucleo una libreria C, non supporta l'overloading delle funzioni, quindi, ogni volta che una funzione può essere chiamata con tipi differenti di argomenti, OpenGL definisce una nuova funzione per ogni tipo richiesto. ```glUniform``` è un esempio di ciò: richiede un postfisso specifico per il tipo di uniform che si vuole impostare._
+
+_Ogni volta che vuoi configurare un'opzione in OpenGL, seleziona semplicemente la funzione che corrisponde al tuo tipo. Nel nostro caso volevamo impostare 4 float individualmenti, quindi abbiamo utilizzato ```glUniform4f```._
