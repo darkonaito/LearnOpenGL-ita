@@ -652,3 +652,22 @@ void main()
 Come vedi, abbiamo dichiarato una variabile ```vertexColor``` come un output di tipo ```vec4``` e l'abbiamo impostata nella vertex shader; dopodiché, abbiamo dichiarato una variabile in input ```vertexColor``` nella fragment shader.
 
 Dato che hanno lo stesso nome e lo stesso tipo, saranno collegate tra di loro.
+
+### Uniforms
+
+Le ```uniforms``` sono altri modi di passare dati dalla nostra appliazione sulla CPU alle shaders sulla GPU. Tuttavia, le uniforms differiscono leggermente dagli attributi dei vertici: prima di tutto, le uniforms sono globali. Una uniform è unica per shader program, e può essere utilizzata da ogni shader (in ogni stadio della pipeline) nel suddetto shader program; inoltre, le uniforms manterranno il valore che gli assegni finché esso non sarà resettato o aggiornato.
+
+Per dichiarare una uniform in GLSL, aggiungiamo semplicemente la parola chiave ```uniform``` ad una variabile con un tipo e un nome.
+
+```cpp
+#version 330 core
+
+out vec4 FragColor;
+
+uniform vec4 ourColor; // we set this variable in the OpenGL code.
+
+void main()
+{
+    FragColor = ourColor;
+}
+```
