@@ -617,3 +617,37 @@ Le shaders sono pezzi di un qualcosa di più grande, e perciò ci serve che abbi
 Il linguaggio GLSL definisce le parole chiave ```in``` e ```out``` specificamente per questo scopo. Ogni shader può specificare input e output utilizzando queste keyword, e ogni volta che una variabile in output di una shader combacia con quella in input della prossima, le due variabili vengono collegate. Tuttavia, la vertex shader e la fragment shader differiscono un po'.
 
 La vertex shader DEVE ricevere qualche forma di input, altrimenti sarebeb piuttosto inutile. Una differenza di tale shader è che riceve l'input direttamente dalla vertex data. Per definire come sono organizzati i dati dei vertici dichiariamo le variabili in input con metadata sulla loro localizzazione, così da poter configurare i vertex attributes sulla CPU. La vertex shader richiede quindi una specificazione di layout extra per i suoi input, così che possiamo collegarli ai dati dei vertici.
+
+L'altra eccezione è che la fragment shader richiede una variabile output di colore vec4, dato che deve generarne uno finale. Se non si riesce a specificare un colore in output con successo, il colore del frammento in questione sarà indefinito (solitamente o bianco o nero).
+
+Quindi, se vogliamo inviare dati da una shader all'altra, dobbiamo dichiarere una variabile in output nella shader che invierà i dati, e una di input in quella che li riceverà. Se i nomi e i tipi delle variabili sono uguali in entrambe le shader, OpenGL linkerà quelle variabili insieme e sarà possibile scambiare dati.
+
+Vertex shader:
+```cpp
+#version 330 core
+
+layout (location = 0) in vec3 aPos; // position has attribute position 0
+
+out vec4 vertexColor; // specify a color output to the fragment shader
+
+void main()
+{
+    gl_Position = vec4(aPos, 1.0); // we give a vec3 to vec4’s constructor
+    vertexColor = vec4(0.5, 0.0, 0.0, 1.0); // output variable to dark-red
+}
+```
+Fragment shader:
+```cpp
+#version 330 core
+
+out vec4 FragColor;
+
+in vec4 vertexColor; // input variable from vs (same name and type)
+void main()
+{
+    FragColor = vertexColor;
+}
+```
+Come vedi, abbiamo dichiarato una variabile ```vertexColor``` come un output di tipo ```vec4``` e l'abbiamo impostata nella vertex shader; dopodiché, abbiamo dichiarato una variabile in input ```vertexColor``` nella fragment shader.
+
+Dato che hanno lo stesso nome e lo stesso tipo, saranno collegate tra di loro.
