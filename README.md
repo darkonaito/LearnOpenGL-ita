@@ -696,3 +696,38 @@ Trovare la posizione di una uniform non richiede che il shader program sia utili
 _Dato che OpenGL è al suo nucleo una libreria C, non supporta l'overloading delle funzioni, quindi, ogni volta che una funzione può essere chiamata con tipi differenti di argomenti, OpenGL definisce una nuova funzione per ogni tipo richiesto. ```glUniform``` è un esempio di ciò: richiede un postfisso specifico per il tipo di uniform che si vuole impostare._
 
 _Ogni volta che vuoi configurare un'opzione in OpenGL, seleziona semplicemente la funzione che corrisponde al tuo tipo. Nel nostro caso volevamo impostare 4 float individualmenti, quindi abbiamo utilizzato ```glUniform4f```._
+
+Se vogliamo che il colore cambi gradyalmente, dobbiamo aggiornare la uniform ogni frame, altrimenti il triangolo manterrebbe un singolo colore statico; perciò calcoliamo ```greenValue``` e aggiorniamo la uniform ad ogni iterazione.
+```cpp
+while(!glfwWindowShouldClose(window))
+{
+    // input
+    processInput(window);
+
+    // render
+    // clear the colorbuffer
+    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // be sure to activate the shader
+    glUseProgram(shaderProgram);
+
+    // update the uniform color
+    float timeValue = glfwGetTime();
+    float greenValue = sin(timeValue) / 2.0f + 0.5f;
+    int vertexColorLocation = glGetUniformLocation(shaderProgram,
+    "ourColor");
+    glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+
+    // now render the triangle
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+
+    // swap buffers and poll IO events
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+}
+```
+Le uniform sono degli oggetti utili per impostare attributi che potrebbero cambiare col tempo, o per scambiare data tra la tua applicazione e le tue shaders, ma come fare se volessimo impostare il colore per ogni vertice? In questo caso dovremmo dichiarare tante uniformi quanti sono i vertici.
+
+Una soluzione migliore sarebbe quella di includere più dati nei vertex attributes.
