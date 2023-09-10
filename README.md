@@ -177,7 +177,7 @@ Le tue coordinate NDC saranno trasformate a coordinate "screen-space" tramite il
 
 Questi dati dei vertici che abbiamo definito vogliamo adesso inviarli come input al primo processo della pipeline, la vertex shader. Ciò si attua creando della memoria sulla GPU dove immagazzinare i vertex data, configurando come OpenGL debba interpretare la memoria e come inviare i dati alla scheda grafica.
 
-La vertex shader processerà tanti vertici quanti gliene vengono indicati dalla sua memoria.
+La vertex shader processerà dalla sua memoria tanti vertici quandi gliene vengono indicati.
 
 Gestiamo tale memoria tramita i "vertex buffer objects (VBO)", che possono memorizzare un grande numero di vertici nella memoria della GPU.
 
