@@ -310,7 +310,7 @@ void main()
 La fragment shader richiede una variabile di output soltanto, che consiste in un vettore di quattro elementi che rappresenta il colore finale del pixel. Possiamo dichiarare valori di output tramite la parola chiave ```out```, che qui abbiamo rinominato ```FragColor```.
 
 ### Shader program
-Per usare le shader che abbiamo appena compilato, dobbiamo linkarle a un shader program object e poi attivarle quando renderizziamo oggetti. Le shader del shader program attivato verranno usate quando effettuermo chiamate di rendering.
+Per usare le shader che abbiamo appena compilato, dobbiamo linkarle a un shader program object e poi attivarle quando renderizziamo degli oggetti. Le shader del shader program attivato verranno usate quando effettuermo chiamate di rendering.
 
 Quando linkiamo le shader in un programma, l'output di ogni shader viene usato come input della prossima. Qua potresti ottenere errori di linking se gli output e input non corrispondono.
 
