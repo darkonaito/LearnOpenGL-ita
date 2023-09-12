@@ -1,5 +1,11 @@
 >Un ringraziamento speciale va a Tilo', benemenito editore, e a Madao, programmatore del popolo.
 
+# Sezione artigianale, UNSAFE, per eventuali problemi rivolgetevi a Madao
+> Informazioni reperite da https://github.com/fendevel/Guide-to-Modern-OpenGL-Functions e dal sito ufficiale di OpenGL.
+## DSA - Direct State Access
+
+
+
 # Getting started
 ## OpenGL
 OpenGL è principalmente considerata un'API che ci mette a disposizione un vasto insieme di funzioni che ci permettono di manipolare immagini e grafica. Tuttavia, OpenGL in sè non è effettivamente un'API, ma piuttosto una specifica, sviluppata e mantenuta da www.khronos.org.
