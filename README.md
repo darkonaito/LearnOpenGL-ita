@@ -1,7 +1,7 @@
 >Un ringraziamento speciale va a Tilo', benemenito editore, e a Madao, programmatore del popolo.
 
 # Sezione artigianale, UNSAFE, per eventuali problemi rivolgetevi a Madao
-> Informazioni reperite da https://github.com/fendevel/Guide-to-Modern-OpenGL-Functions e dal sito ufficiale di OpenGL.
+> Informazioni reperite da https://github.com/fendevel/Guide-to-Modern-OpenGL-Functions, https://yaakuro.gitbook.io/opengl-4-5 e dal sito ufficiale di OpenGL.
 ## DSA - Direct State Access
 
 
