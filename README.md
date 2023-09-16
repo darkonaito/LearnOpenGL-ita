@@ -27,7 +27,14 @@ const std::vector<vertex> vertices {
 
 glNamedBufferStorage(vbo, vertices.size() * sizeof(vertex), vertices.data(), 0);
 ```
-La prima cosa che facciamo  
+La prima cosa che facciamo è definire una struttura per i nostri vertici. La struttura conterrà 3 posizioni e 3 dati sui colori.
+Dopodiché, abbiamo creato 3 vertici e li abbiamo messi in un array chiamato ```vertices```. Ora vogliamo dire ad OpenGL che vorremmo caricare i vertici e come vorremmo usare il Buffer Object più tardi. 
+
+Per allocare la memoria e impostare le proprietà del buffer object utilizziamo la funzione ```glNamedBufferStorage```.
+
+Il primo parametro è l'id del buffer object, il secondo la grandezza del buffer, il terzo un puntatore ai dati da caricare dentro la memoria del buffer, e il quarto indica l'utilizzo che vogliamo fare del buffer.
+
+
 
 
 # Getting started
