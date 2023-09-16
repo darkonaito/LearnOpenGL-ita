@@ -3,7 +3,7 @@
 # Sezione artigianale, UNSAFE, per eventuali problemi rivolgetevi a Madao
 > Informazioni reperite da https://github.com/fendevel/Guide-to-Modern-OpenGL-Functions, https://yaakuro.gitbook.io/opengl-4-5 e dal sito ufficiale di OpenGL.
 ## DSA - Direct State Access
-
+### Creazione dell'identificatore
 Per creare un Buffer Object utilizziamo la funzione ```glCreateBuffers```:
 ```cpp
 GLuint VBO {};
@@ -11,7 +11,24 @@ glCreateBuffers(1, &VBO);
 ```
 Il primo parametro è il numero di buffer da creare, mentre il secondo è un array in cui memorizzare gli id dei nuovi buffer.
 
-Per ora non abbiamo ancora allocato memoria per il buffer; abbiamo solo ottenuto un id valido che useremo per riferirci ad esso.
+Per ora non abbiamo ancora allocato memoria per il buffer; abbiamo solo ottenuto un id valido che useremo per riferirci ad esso. Nella prossima sezione vedremo come allocare memoria.
+### Allocare e inizializzare memoria
+```cpp
+struct vertex {
+    float x, y, z;
+    float r, g, b;
+};
+
+const std::vector<vertex> vertices {
+    {-1.0f, -1.0f, 1.0f, 1.0f, 0.0f, 0.0f }, // Vertex 1
+    { 0.0f,  1.0f, 1.0f, 0.0f, 1.0f, 0.0f }, // Vertex 2
+    { 1.0f, -1.0f, 1.0f, 0.0f, 0.0f, 1.0f }  // Vertex 3
+};
+
+glNamedBufferStorage(vbo, vertices.size() * sizeof(vertex), vertices.data(), 0);
+```
+La prima cosa che facciamo  
+
 
 # Getting started
 ## OpenGL
