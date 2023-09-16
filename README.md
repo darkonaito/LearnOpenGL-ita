@@ -34,6 +34,10 @@ Per allocare la memoria e impostare le proprietà del buffer object utilizziamo 
 
 Il primo parametro è l'id del buffer object, il secondo la grandezza del buffer, il terzo un puntatore ai dati da caricare dentro la memoria del buffer, e il quarto indica l'utilizzo che vogliamo fare del buffer.
 
+* Il primo parametro dev'essere un id di un Buffer Object valido. Ne abbiamo ottenuto uno quando abbiamo usato ```glCreateBuffers```.
+* Il secondo parametro è la grandezza del buffer in bytes.
+* Il terzo parametro punta al buffer dove son situati i dati da caricare; se specifichiamo ```nullptr```, niente verrà caricato in memoria ma questa verrà allocata (tanta quanta specificata nel secondo parametro).
+* Il quarto parametro è il più importante: dice ad OpenGL come trattare il buffer quando questo viene usato in altre funzioni OpenGL. I seguenti bit possono essere combinati con l'operator ```or```:
 
 
 
