@@ -4,7 +4,14 @@
 > Informazioni reperite da https://github.com/fendevel/Guide-to-Modern-OpenGL-Functions, https://yaakuro.gitbook.io/opengl-4-5 e dal sito ufficiale di OpenGL.
 ## DSA - Direct State Access
 
+Per creare un Buffer Object utilizziamo la funzione ```glCreateBuffers```:
+```cpp
+GLuint VBO {};
+glCreateBuffers(1, &VBO);
+```
+Il primo parametro è il numero di buffer da creare, mentre il secondo è un array in cui memorizzare gli id dei nuovi buffer.
 
+Per ora non abbiamo ancora allocato memoria per il buffer; abbiamo solo ottenuto un id valido che useremo per riferirci ad esso.
 
 # Getting started
 ## OpenGL
