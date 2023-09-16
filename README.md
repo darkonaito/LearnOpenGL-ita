@@ -37,7 +37,9 @@ Il primo parametro è l'id del buffer object, il secondo la grandezza del buffer
 * Il primo parametro dev'essere un id di un Buffer Object valido. Ne abbiamo ottenuto uno quando abbiamo usato ```glCreateBuffers```.
 * Il secondo parametro è la grandezza del buffer in bytes.
 * Il terzo parametro punta al buffer dove son situati i dati da caricare; se specifichiamo ```nullptr```, niente verrà caricato in memoria ma questa verrà allocata (tanta quanta specificata nel secondo parametro).
-* Il quarto parametro è il più importante: dice ad OpenGL come trattare il buffer quando questo viene usato in altre funzioni OpenGL. I seguenti bit possono essere combinati con l'operator ```or```:
+* Il quarto parametro è il più importante: dice ad OpenGL come trattare il buffer quando questo viene usato in altre funzioni OpenGL.
+
+I seguenti bit possono essere combinati con l'operator ```or```:
 
 * _GL_DYNAMIC_STORAGE_BIT_: Vogliamo cambiare il contenuto del buffer utilizzando ```glBufferSubData```. Se non specifichiamo questo bit, non saremo in grado di modificare i dati del buffer direttamente.
 * _GL_MAP_READ_BIT_: Necessario per utilizzare ```glMapNamedBuffer``` per leggere dalla memoria del buffer.
