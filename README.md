@@ -1,5 +1,53 @@
 >Un ringraziamento speciale va a Tilo', benemenito editore, e a Madao, programmatore del popolo.
 
+# Sezione artigianale, UNSAFE, per eventuali problemi rivolgetevi a Madao
+> Informazioni reperite da https://github.com/fendevel/Guide-to-Modern-OpenGL-Functions, https://yaakuro.gitbook.io/opengl-4-5 e dal sito ufficiale di OpenGL.
+## DSA - Direct State Access
+### Creazione dell'identificatore
+Per creare un Buffer Object utilizziamo la funzione ```glCreateBuffers```:
+```cpp
+GLuint VBO {};
+glCreateBuffers(1, &VBO);
+```
+Il primo parametro è il numero di buffer da creare, mentre il secondo è un array in cui memorizzare gli id dei nuovi buffer.
+
+Per ora non abbiamo ancora allocato memoria per il buffer; abbiamo solo ottenuto un id valido che useremo per riferirci ad esso. Nella prossima sezione vedremo come allocare memoria.
+### Allocare e inizializzare memoria
+```cpp
+struct vertex {
+    float x, y, z;
+    float r, g, b;
+};
+
+const std::vector<vertex> vertices {
+    {-1.0f, -1.0f, 1.0f, 1.0f, 0.0f, 0.0f }, // Vertex 1
+    { 0.0f,  1.0f, 1.0f, 0.0f, 1.0f, 0.0f }, // Vertex 2
+    { 1.0f, -1.0f, 1.0f, 0.0f, 0.0f, 1.0f }  // Vertex 3
+};
+
+glNamedBufferStorage(vbo, vertices.size() * sizeof(vertex), vertices.data(), 0);
+```
+La prima cosa che facciamo è definire una struttura per i nostri vertici. La struttura conterrà 3 posizioni e 3 dati sui colori.
+Dopodiché, abbiamo creato 3 vertici e li abbiamo messi in un array chiamato ```vertices```. Ora vogliamo dire ad OpenGL che vorremmo caricare i vertici e come vorremmo usare il Buffer Object più tardi. 
+
+Per allocare la memoria e impostare le proprietà del buffer object utilizziamo la funzione ```glNamedBufferStorage```.
+
+Il primo parametro è l'id del buffer object, il secondo la grandezza del buffer, il terzo un puntatore ai dati da caricare dentro la memoria del buffer, e il quarto indica l'utilizzo che vogliamo fare del buffer.
+
+* Il primo parametro dev'essere un id di un Buffer Object valido. Ne abbiamo ottenuto uno quando abbiamo usato ```glCreateBuffers```.
+* Il secondo parametro è la grandezza del buffer in bytes.
+* Il terzo parametro punta al buffer dove son situati i dati da caricare; se specifichiamo ```nullptr```, niente verrà caricato in memoria ma questa verrà allocata (tanta quanta specificata nel secondo parametro).
+* Il quarto parametro è il più importante: dice ad OpenGL come trattare il buffer quando questo viene usato in altre funzioni OpenGL.
+
+I seguenti bit possono essere combinati con l'operator ```or```:
+
+* _GL_DYNAMIC_STORAGE_BIT_: Vogliamo cambiare il contenuto del buffer utilizzando ```glBufferSubData```. Se non specifichiamo questo bit, non saremo in grado di modificare i dati del buffer direttamente.
+* _GL_MAP_READ_BIT_: Necessario per utilizzare ```glMapNamedBuffer``` per leggere dalla memoria del buffer.
+* _GL_MAP_WRITE_BIT_: necessario per utilizzare ```glMapNamedBuffer``` per scrivere nella memoria del buffer.
+* _GL_CLIENT_STORAGE_BIT_: Vogliamo maneggiare il buffer all'interno della memoria del client (programma).
+
+Nel nostro esempio abbiamo utilizzato la flag di default, 0: significa che vogliamo semplicemente usare il buffer per disegnare e non toccarlo più.
+
 # Getting started
 ## OpenGL
 OpenGL è principalmente considerata un'API che ci mette a disposizione un vasto insieme di funzioni che ci permettono di manipolare immagini e grafica. Tuttavia, OpenGL in sè non è effettivamente un'API, ma piuttosto una specifica, sviluppata e mantenuta da www.khronos.org.
@@ -177,7 +225,7 @@ Le tue coordinate NDC saranno trasformate a coordinate "screen-space" tramite il
 
 Questi dati dei vertici che abbiamo definito vogliamo adesso inviarli come input al primo processo della pipeline, la vertex shader. Ciò si attua creando della memoria sulla GPU dove immagazzinare i vertex data, configurando come OpenGL debba interpretare la memoria e come inviare i dati alla scheda grafica.
 
-La vertex shader processerà tanti vertici quanti glie ne vengono indicati dalla sua memoria.
+La vertex shader processerà dalla sua memoria tanti vertici quandi gliene vengono indicati.
 
 Gestiamo tale memoria tramita i "vertex buffer objects (VBO)", che possono memorizzare un grande numero di vertici nella memoria della GPU.
 
@@ -191,7 +239,7 @@ Come ogni oggetto in OpenGL, questo buffer ha un ID unico. Per crearne uno utili
 unsigned int VBO;
 glGenBuffers(1, &VBO);
 ```
-OpenGL ha tanti tipi di buffer, e il tipo di buffer di un buffer di vertici è ```GL_ARRAY_BUFFER```.
+OpenGL ha tanti tipi di buffer, e il tipo di un buffer di vertici è ```GL_ARRAY_BUFFER```.
 OpenGL ci permette di abbinare diversi buffer in una volta, purché siano di tipo differente. 
 
 Possiamo abbinare il buffer appena creato al target ```GL_ARRAY_BUFFER``` tramite la funzione ```glBindBuffer```:
@@ -211,7 +259,7 @@ Il quarto parametro specifica come vogliamo che la scheda grafica tratti i dati 
 * ```GL_STATIC_DRAW``` : I dati sono impostati una sola volta e usati tante volte.
 * ```GL_DYNAMIC_DRAW```: I dati cambiano molto spesso e sono usati tante volte.
 
-I dati riguardanti la posizioen del triangolo non cambiano, sono usati molti, e rimangono gli stessi per ogni chiamata di rendering, quindi il suo tipo di utilizzo dev'essere ```GL_STATIC_DRAW```.
+I dati riguardanti la posizione del triangolo non cambiano, sono usati molti, e rimangono gli stessi per ogni chiamata di rendering, quindi il suo tipo di utilizzo dev'essere ```GL_STATIC_DRAW```.
 
 Se, per esempio, avessimo un buffer con dati che tendono a cambiare spesso, un tipo di utilizzo ```GL_DYNAMIC_DRAW``` ci assicura che la scheda grafica ponga qui dati in un posto nella memoria che ne consenta un accesso veloce.
 
@@ -304,7 +352,7 @@ void main()
 La fragment shader richiede una variabile di output soltanto, che consiste in un vettore di quattro elementi che rappresenta il colore finale del pixel. Possiamo dichiarare valori di output tramite la parola chiave ```out```, che qui abbiamo rinominato ```FragColor```.
 
 ### Shader program
-Per usare le shader che abbiamo appena compilato, dobbiamo linkarle a un shader program object e poi attivarle quando renderizziamo oggetti. Le shader del shader program attivato verranno usate quando effettuermo chiamate di rendering.
+Per usare le shader che abbiamo appena compilato, dobbiamo linkarle a un shader program object e poi attivarle quando renderizziamo degli oggetti. Le shader del shader program attivato verranno usate quando effettuermo chiamate di rendering.
 
 Quando linkiamo le shader in un programma, l'output di ogni shader viene usato come input della prossima. Qua potresti ottenere errori di linking se gli output e input non corrispondono.
 
