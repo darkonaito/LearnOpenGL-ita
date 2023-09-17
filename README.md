@@ -112,6 +112,14 @@ glVertexArrayAttribFormat(vao, 0, 3, GL_FLOAT, GL_FALSE, offsetof(vertex, x));
 * Il quinto argomento indica se vogliamo normalizzare i valori in entrata.
 * Il sesto argomento indica la distanza tra elementi nel buffer. 
 
+Adesso associamo i vertex attribute al vertex array tramite ```glVertexArrayAttribBinding```.
+* Il primo argomento è il VAO.
+* Il secondo argomento è l'indice dell'attributo da associare.
+* Il terzo argomento è l'indice dell'abbinamento al vertex buffer con cui associare il generico attributo dei vertici.
+
+Infine, abilitiamo gli attributi con ```glEnableVertexArrayAttrib```.
+* Il primo parametro è il VAO.
+* Il secondo parametro è l'attribute da abilitare.
 
 # Getting started
 ## OpenGL
