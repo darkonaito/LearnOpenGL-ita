@@ -81,7 +81,7 @@ Possiamo assegnare uno o più VBO e un EBO, e dobbiamo farlo una sola volta.
 Creiamo un VAO tramite ```glCreateVertexArrays```:
 ```cpp
 GLuint vao {};
-glCreateVertexArrays(1, &vao);
+glCreateVertexArrays(1, &vao);```
 ```
 La prossima cosa che facciamo e dire ad OpenGL dove trovare i dati dei vertici, ovvero quale VBO vogliamo usare e come la shader può usarlo dopo: lo facciamo con ```glVertexArrayVertexBuffer```:
 ```cpp
@@ -92,6 +92,21 @@ glVertexArrayVertexBuffer(vao, 0, vbo, 0, sizeof(vertex));
 * Il terzo parametro è il nome del VBO che vogliamo abbinare.
 * Il quarto parametro è l'offset all'interno del VBO, se vogliamo.
 * Il quinto parametro è la distanza tra gli elementi del VBO.
+
+Adesso, specifichiamo ad OpenGL come la shader accederà ai buffer, tramite ```glVertexArrayAttribBinding```:
+```cpp
+glVertexArrayAttribBinding(vao, 0, 0);
+```
+* Il primo argomento è il nome del VAO.
+* Il secondo argomento è l'indice dell'attributo della shader.
+* Il terzo argomento è il punto di abbinamento (nel nostro caso, l'indice che abbiamo usato in ```glVertexArrayVertexBuffer```).
+
+Ora, indichiamo ad opengl come è strutturato il VBO, e lo facciamo con ```glVertexArrayAttribFormat```:
+```cpp
+glVertexArrayAttribFormat(vao, 0, 3, GL_FLOAT, GL_FALSE, offsetof(vertex, x));
+```
+* Il primo argomento 
+
 
 # Getting started
 ## OpenGL
