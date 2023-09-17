@@ -2,6 +2,9 @@
 
 # Sezione artigianale, UNSAFE, per eventuali problemi rivolgetevi a Madao
 > Informazioni reperite da https://github.com/fendevel/Guide-to-Modern-OpenGL-Functions, https://yaakuro.gitbook.io/opengl-4-5 e dal sito ufficiale di OpenGL.
+## Appunti
+```glNamedBufferStorage``` crea e inizializza un oggetto buffer con una memoria di grandezza immutabile, mentre ```glNamedBufferData``` rialloca la memoria dell'oggetto ogni volta che viene chiamato, e crea un buffer quindi di grandezza variabile; è preferito usare ```glNamedBufferSubData``` che non causa reallocamenti.
+
 ## DSA - Direct State Access
 ### Creazione dell'identificatore
 Per creare un Buffer Object utilizziamo la funzione ```glCreateBuffers```:
