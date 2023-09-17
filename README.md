@@ -60,8 +60,8 @@ Utilizziamo, per copiare dati tra BO, ```glCopyNamedBufferSubData```.
 ### Mappare indirizzi BO nello spazio di memoria del client
 Se vogliamo modificare i valori di un BO manualmente, possiamo mappare la sua memoria dentro quella del client. Usiamo a questo scopo ```glMapNamedBuffer``` - possiamo usare questa funzione solo se abbiamo settato i bit giusti quando abbiamo inizializzato il buffer.
 
-* Il primo argomento è il nome del Vertex Buffer.
-* Il secondo argomento specifica la policy di accesso.
+* Il primo parametro è il nome del Vertex Buffer.
+* Il secondo parametro specifica la policy di accesso.
 
 Le policy di accesso son le seguenti:
 
@@ -97,25 +97,25 @@ Adesso, specifichiamo ad OpenGL come la shader accederà ai buffer, tramite ```g
 ```cpp
 glVertexArrayAttribBinding(vao, 0, 0);
 ```
-* Il primo argomento è il nome del VAO.
-* Il secondo argomento è l'indice dell'attributo della shader.
-* Il terzo argomento è il punto di abbinamento (nel nostro caso, l'indice che abbiamo usato in ```glVertexArrayVertexBuffer```).
+* Il primo parametro è il nome del VAO.
+* Il secondo parametro è l'indice dell'attributo della shader.
+* Il terzo parametro è il punto di abbinamento (nel nostro caso, l'indice che abbiamo usato in ```glVertexArrayVertexBuffer```).
 
 Ora, indichiamo ad opengl come è strutturato il VBO, e lo facciamo con ```glVertexArrayAttribFormat```:
 ```cpp
 glVertexArrayAttribFormat(vao, 0, 3, GL_FLOAT, GL_FALSE, offsetof(vertex, x));
 ```
-* Il primo argomento è il nome del VAO.
-* Il secondo argomento è l'index dell'attributo della shader.
-* Il terzo argomento è il numero di componenti.
-* Il quarto argomento è il tipo dei componenti.
-* Il quinto argomento indica se vogliamo normalizzare i valori in entrata.
-* Il sesto argomento indica la distanza tra elementi nel buffer. 
+* Il primo parametro è il nome del VAO.
+* Il secondo parametro è l'index dell'attributo della shader.
+* Il terzo parametro è il numero di componenti.
+* Il quarto parametro è il tipo dei componenti.
+* Il quinto parametro indica se vogliamo normalizzare i valori in entrata.
+* Il sesto parametro indica la distanza tra elementi nel buffer. 
 
 Adesso associamo i vertex attribute al vertex array tramite ```glVertexArrayAttribBinding```.
-* Il primo argomento è il VAO.
-* Il secondo argomento è l'indice dell'attributo da associare.
-* Il terzo argomento è l'indice dell'abbinamento al vertex buffer con cui associare il generico attributo dei vertici.
+* Il primo parametro è il VAO.
+* Il secondo parametro è l'indice dell'attributo da associare.
+* Il terzo parametro è l'indice dell'abbinamento al vertex buffer con cui associare il generico attributo dei vertici.
 
 Infine, abilitiamo gli attributi con ```glEnableVertexArrayAttrib```.
 * Il primo parametro è il VAO.
