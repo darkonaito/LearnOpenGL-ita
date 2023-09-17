@@ -48,6 +48,15 @@ I seguenti bit possono essere combinati con l'operator ```or```:
 
 Nel nostro esempio abbiamo utilizzato la flag di default, 0: significa che vogliamo semplicemente usare il buffer per disegnare e non toccarlo più.
 
+### Copiare dati tra Buffer Objects
+Utilizziamo, per copiare dati tra BO, ```glCopyNamedBufferSubData```.
+
+* Il primo parametro è il nome del buffer da cui vogliamo prendere i dati.
+* Il secondo parametro è il buffer su cui vogliamo copiare i dati.
+* Il terzo parametro è l'offset che vogliamo usare col buffer da cui leggiamo i dati.
+* Il quarto parametro è l'offset che vogliamo utilizzare per il buffer a cui scriveremo.
+* Il quinto parametro è il numero di byte da copiare.
+
 # Getting started
 ## OpenGL
 OpenGL è principalmente considerata un'API che ci mette a disposizione un vasto insieme di funzioni che ci permettono di manipolare immagini e grafica. Tuttavia, OpenGL in sè non è effettivamente un'API, ma piuttosto una specifica, sviluppata e mantenuta da www.khronos.org.
