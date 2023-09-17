@@ -11,7 +11,7 @@ Le versioni sviluppate di OpenGL sono libere di avere implementazioni differenti
 Le persone che sviluppano le librerie OpenGL sono solitamente i costruttori delle schede grafiche.
 
 _- Quando vi è un bug nell'implementazione, solitamente aggiornare i driver della propria scheda video è una soluzione efficace._
-
+ 
 ### Core-profile vs Immediate mode
 Tempo addietro, usare OpenGL era sinonimo di sviluppare in "immediate mode", che era un metodo semplice per disegnare grafiche.
 
