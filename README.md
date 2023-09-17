@@ -105,7 +105,12 @@ Ora, indichiamo ad opengl come è strutturato il VBO, e lo facciamo con ```glVer
 ```cpp
 glVertexArrayAttribFormat(vao, 0, 3, GL_FLOAT, GL_FALSE, offsetof(vertex, x));
 ```
-* Il primo argomento 
+* Il primo argomento è il nome del VAO.
+* Il secondo argomento è l'index dell'attributo della shader.
+* Il terzo argomento è il numero di componenti.
+* Il quarto argomento è il tipo dei componenti.
+* Il quinto argomento indica se vogliamo normalizzare i valori in entrata.
+* Il sesto argomento indica la distanza tra elementi nel buffer. 
 
 
 # Getting started
