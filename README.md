@@ -57,6 +57,42 @@ Utilizziamo, per copiare dati tra BO, ```glCopyNamedBufferSubData```.
 * Il quarto parametro è l'offset che vogliamo utilizzare per il buffer a cui scriveremo.
 * Il quinto parametro è il numero di byte da copiare.
 
+### Mappare indirizzi BO nello spazio di memoria del client
+Se vogliamo modificare i valori di un BO manualmente, possiamo mappare la sua memoria dentro quella del client. Usiamo a questo scopo ```glMapNamedBuffer``` - possiamo usare questa funzione solo se abbiamo settato i bit giusti quando abbiamo inizializzato il buffer.
+
+* Il primo argomento è il nome del Vertex Buffer.
+* Il secondo argomento specifica la policy di accesso.
+
+Le policy di accesso son le seguenti:
+
+* _GL_READ_ONLY_: Leggeremo solamente.
+* _GL_WRITE_ONLY_: Scriveremo solamente.
+* _GL_READ_WRITE_: Leggeremo e scriveremo dentro al buffer.
+
+Se tutto va come previsto, la funzione darà in ritorno un puntatore valido.
+
+Quando finiamo di scrivere o leggere il buffer, dobbiamo de-mapparlo, tramite la funzione ```glUnmapNamedBuffer```.
+
+### Vertex Array Object
+Un VAO porta con se un riferimento a uno o più Buffer Object, una descrizione di come questi son strutturati, e il collegamento agli attributi delle shaders.
+
+Possiamo assegnare uno o più VBO e un EBO, e dobbiamo farlo una sola volta.
+
+Creiamo un VAO tramite ```glCreateVertexArrays```:
+```cpp
+GLuint vao {};
+glCreateVertexArrays(1, &vao);
+```
+La prossima cosa che facciamo e dire ad OpenGL dove trovare i dati dei vertici, ovvero quale VBO vogliamo usare e come la shader può usarlo dopo: lo facciamo con ```glVertexArrayVertexBuffer```:
+```cpp
+glVertexArrayVertexBuffer(vao, 0, vbo, 0, sizeof(vertex));
+```
+* Il primo parametro è il nome del VAO.
+* Il secondo parametro è il punto di abbinamento per il VBO. NON è l'indice degli attributi per le shader. Semplicemente, diciamo ad OpenGL che vogliamo identificare il VBO che specifichiamo con questo indice.
+* Il terzo parametro è il nome del VBO che vogliamo abbinare.
+* Il quarto parametro è l'offset all'interno del VBO, se vogliamo.
+* Il quinto parametro è la distanza tra gli elementi del VBO.
+
 # Getting started
 ## OpenGL
 OpenGL è principalmente considerata un'API che ci mette a disposizione un vasto insieme di funzioni che ci permettono di manipolare immagini e grafica. Tuttavia, OpenGL in sè non è effettivamente un'API, ma piuttosto una specifica, sviluppata e mantenuta da www.khronos.org.
